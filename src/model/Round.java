@@ -12,7 +12,11 @@ public class Round {
 	private final Deck deck;
 	private boolean draw = false;
 	private int[] prevValues;
+	private Round Round;
+	private String prevRoundString;
+	private int no_cards;
 	
+
 	// Constructor
 	public Round(Player[] playersArray, Player CurrentDecidingPlayer, CommunalPile communalPipe, int Index, Deck deck,
 			int numCards) {
@@ -82,6 +86,31 @@ public class Round {
 	public void setPile(CommunalPile pile) {
 		this.pile = pile;
 	}
+
+	public Round getRound() {
+		return Round;
+	}
+
+	public void setRound(Round round) {
+		Round = round;
+	}
+
+	public String getPrevRoundString() {
+		return prevRoundString;
+	}
+
+	public void setPrevRoundString(String prevRoundString) {
+		this.prevRoundString = prevRoundString;
+	}
+	
+	public int getNo_cards() {
+		return no_cards;
+	}
+
+	public void setNo_cards(int no_cards) {
+		this.no_cards = no_cards;
+	}
+
 	
 	
 	
