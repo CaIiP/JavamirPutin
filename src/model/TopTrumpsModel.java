@@ -29,6 +29,8 @@ public class TopTrumpsModel {
 	private DeckController deckC;
 	private String[] CompPlayerNames;
 	private Random rand;
+	private Database database = new Database();
+	private GameStats gameStats;
 	
 	
 
@@ -47,6 +49,21 @@ public class TopTrumpsModel {
 		this.deckC = deckC;
 		CompPlayerNames = compPlayerNames;
 		this.rand = rand;
+	}
+	
+	public void statWrite(DTO dto)	{
+		database.dbConnect();
+		database.dbWriteStats(dto);
+		database.dbDisconnect();
+		
+	}
+	
+	
+	public void statView()	{
+		database.dbConnect();
+		gameStats = database.dbgetStats();
+		System.out.println(gameStats);
+		database.dbDisconnect();
 	}
 
 	/**

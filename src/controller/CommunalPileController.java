@@ -4,6 +4,7 @@ import model.Card;
 import model.CommunalPile;
 
 public class CommunalPileController {
+	
 	//function used to obtain a letter from the communal pile
 	public void giveCard(Card newCard,CommunalPile cp) {
 		Card[] newHand = new Card[cp.getCards().length + 1];//a array letter object is created with a communal pile letter

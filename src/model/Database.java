@@ -11,14 +11,17 @@ public class Database {
 	private String dbURL = "jdbc:postgresql://yacata.dcs.gla.ac.uk:5432";
 	
 	//variables for writing stats to database
-	private int totalGames = 0;
-	private int totalDraws = 0;
-	private int totalRounds = 0;
-	private int totalHumanWins = 0;
-	private int totalBotWins = 0;
+	private int totalGames;
+	private int totalDraws;
+	private int totalRounds;
+	private int totalHumanWins;
+	private int totalBot1Wins;
+	private int totalBot2Wins;
+	private int totalBot3Wins;
+	private int totalBot4Wins;
 	
 	//SQL query for writing stats to database
-	String Q_writeStats = "INSERT INTO game_stats VALUES(" + totalGames + ", " + totalDraws + ", " + totalRounds + ", " + totalHumanWins + ", " + totalBotWins + ")";
+	String Q_writeStats = "INSERT INTO game_stats VALUES(" + totalGames + ", " + totalDraws + ", " + totalRounds + ", " + totalHumanWins + ", " + totalBot1Wins + ", " + totalBot2Wins + ", " + totalBot3Wins + ", " + totalBot4Wins+ ")";
 
 	//variables for getting stats from database
 	private int	gDrawAvg = 0;
@@ -77,7 +80,10 @@ public class Database {
 		totalDraws = stats.getDrawCounter();		//total number of draws in a game
 		totalRounds = stats.getRoundCounter();	//total number of rounds in a game
 		totalHumanWins = stats.getHumanWins();		//total number of human player wins
-		totalBotWins = stats.getBotWins();			//total number of AI wins
+		totalBot1Wins = stats.getBot1wins();			//total number of bot 1 wins
+		totalBot2Wins = stats.getBot2wins();			//total number of bot 2 wins
+		totalBot3Wins = stats.getBot3wins();			//total number of bot 3 wins
+		totalBot4Wins = stats.getBot4wins();			//total number of bot 4 wins
 		
 		try	{
 			statement = connection.createStatement();
@@ -85,7 +91,6 @@ public class Database {
 			statement.close();
 		}
 		catch (Exception e)	{
-			
 		}
 	}
 

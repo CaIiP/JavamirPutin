@@ -4,6 +4,8 @@ import model.Card;
 import model.Player;
 
 public class RoundController {
+	
+	
 	//Function that is used to know which attribute was chosen for the selected round and thus be able to value that attribute of the game cards	
 	public int getIndex(Player decidingPlayer,int ATTR) {
 		System.out.println(decidingPlayer.getName());// It shows that player was selected for this round as the main

@@ -19,8 +19,7 @@ public class Deck {
         this.speed = speed;
         this.firepower = firepower;
         this.cargo = cargo;
-        this.range = range;
-        
+        this.range = range;   
     }
 	
 	//getters and setters
