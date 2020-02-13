@@ -74,16 +74,16 @@ public class Database {
 		}	
 	}
 
-	public void dbWriteStats (DTO stats)	{	//writes game statistics to database
+	public void dbWriteStats (DTO dto)	{	//writes game statistics to database
 
-		totalGames = stats.getGameCounter();	//total number of games played
-		totalDraws = stats.getDrawCounter();		//total number of draws in a game
-		totalRounds = stats.getRoundCounter();	//total number of rounds in a game
-		totalHumanWins = stats.getHumanWins();		//total number of human player wins
-		totalBot1Wins = stats.getBot1wins();			//total number of bot 1 wins
-		totalBot2Wins = stats.getBot2wins();			//total number of bot 2 wins
-		totalBot3Wins = stats.getBot3wins();			//total number of bot 3 wins
-		totalBot4Wins = stats.getBot4wins();			//total number of bot 4 wins
+		totalGames = dto.getGameCounter();	//total number of games played
+		totalDraws = dto.getDrawCounter();		//total number of draws in a game
+		totalRounds = dto.getRoundCounter();	//total number of rounds in a game
+		totalHumanWins = dto.getHumanWins();		//total number of human player wins
+		totalBot1Wins = dto.getBot1wins();			//total number of bot 1 wins
+		totalBot2Wins = dto.getBot2wins();			//total number of bot 2 wins
+		totalBot3Wins = dto.getBot3wins();			//total number of bot 3 wins
+		totalBot4Wins = dto.getBot4wins();			//total number of bot 4 wins
 		
 		try	{
 			statement = connection.createStatement();
