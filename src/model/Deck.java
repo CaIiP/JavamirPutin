@@ -14,12 +14,12 @@ public class Deck {
 	private String range;
 	
 	// Constructor
-	public Deck(ArrayList<Card> deck,String size, String speed, String firepower, String cargo, String range) {
+	public Deck(ArrayList<Card> deck,String size, String speed, String range, String firepower, String cargo) {
         this.size = size;
         this.speed = speed;
+        this.range = range;
         this.firepower = firepower;
         this.cargo = cargo;
-        this.range = range;   
     }
 	
 	//getters and setters

@@ -1,5 +1,7 @@
 package model;
 
+/**
+ */
 public class Card {
     
 	//Instance variables
@@ -25,12 +27,12 @@ public class Card {
 	public Card(String fullLine)	{
 		  String[] splitLine = fullLine.split(" ");
 		  this.name = splitLine[0];
-		  
 		  this.size = Integer.parseInt(splitLine[1]);
+		  this.firepower = Integer.parseInt(splitLine[4]);
 		  this.speed = Integer.parseInt(splitLine[2]);
-		  this.cargo = Integer.parseInt(splitLine[3]);
-		  this.range = Integer.parseInt(splitLine[4]);
-		  this.firepower = Integer.parseInt(splitLine[5]);
+		  this.range = Integer.parseInt(splitLine[3]);
+		  this.cargo = Integer.parseInt(splitLine[5]);
+
 	}
 	
 	//getters and setters 
