@@ -28,9 +28,11 @@ public class DTO {
 		this.gameCounter = gameCounter;
 	}
 	public int getRoundCounter() {
+		System.out.println(roundCounter + "GET");
 		return roundCounter;
 	}
 	public void setRoundCounter(int roundCounter) {
+		System.out.println(roundCounter + "SET");
 		this.roundCounter = roundCounter;
 	}
 	public int getHumanWins() {

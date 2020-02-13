@@ -11,18 +11,15 @@ public class Database {
 	private String dbURL = "jdbc:postgresql://yacata.dcs.gla.ac.uk:5432";
 	
 	//variables for writing stats to database
-	private int totalGames;
-	private int totalDraws;
-	private int totalRounds;
-	private int totalHumanWins;
-	private int totalBot1Wins;
-	private int totalBot2Wins;
-	private int totalBot3Wins;
-	private int totalBot4Wins;
+//	private int totalGames = 0;
+//	private int totalDraws = 0;
+//	private int totalRounds = 0;
+//	private int totalHumanWins = 0;
+//	private int totalBot1Wins = 0;
+//	private int totalBot2Wins = 0;
+//	private int totalBot3Wins = 0;
+//	private int totalBot4Wins = 0;
 	
-	//SQL query for writing stats to database
-	String Q_writeStats = "INSERT INTO game_stats VALUES(" + totalGames + ", " + totalDraws + ", " + totalRounds + ", " + totalHumanWins + ", " + totalBot1Wins + ", " + totalBot2Wins + ", " + totalBot3Wins + ", " + totalBot4Wins+ ")";
-
 	//variables for getting stats from database
 	private int	gDrawAvg = 0;
 	private int gLargestRoundNum = 0;
@@ -76,14 +73,16 @@ public class Database {
 
 	public void dbWriteStats (DTO dto)	{	//writes game statistics to database
 
-		totalGames = dto.getGameCounter();	//total number of games played
-		totalDraws = dto.getDrawCounter();		//total number of draws in a game
-		totalRounds = dto.getRoundCounter();	//total number of rounds in a game
-		totalHumanWins = dto.getHumanWins();		//total number of human player wins
-		totalBot1Wins = dto.getBot1wins();			//total number of bot 1 wins
-		totalBot2Wins = dto.getBot2wins();			//total number of bot 2 wins
-		totalBot3Wins = dto.getBot3wins();			//total number of bot 3 wins
-		totalBot4Wins = dto.getBot4wins();			//total number of bot 4 wins
+		int totalGames = dto.getGameCounter();	//total number of games played
+		int totalDraws = dto.getDrawCounter();		//total number of draws in a game
+		int totalRounds = dto.getRoundCounter();	//total number of rounds in a game
+		int totalHumanWins = dto.getHumanWins();		//total number of human player wins
+		int totalBot1Wins = dto.getBot1wins();			//total number of bot 1 wins
+		int totalBot2Wins = dto.getBot2wins();			//total number of bot 2 wins
+		int totalBot3Wins = dto.getBot3wins();			//total number of bot 3 wins
+		int totalBot4Wins = dto.getBot4wins();			//total number of bot 4 wins
+		
+		String Q_writeStats = "INSERT INTO game_stats VALUES(" + totalGames + ", " + totalDraws + ", " + totalRounds + ", " + totalHumanWins + ", " + totalBot1Wins + ", " + totalBot2Wins + ", " + totalBot3Wins + ", " + totalBot4Wins+ ")";
 		
 		try	{
 			statement = connection.createStatement();

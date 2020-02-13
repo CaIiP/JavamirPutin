@@ -120,6 +120,7 @@ public class TopTrumpsCAController {
 				if (isNumeric(entradaTeclado)) {
 					if (Integer.parseInt(entradaTeclado) == 1) {
 						TopTrumpsModel.setUserWantsToQuit(false);
+//						TopTrumpsModel.statWrite(dto);
 					} else if (Integer.parseInt(entradaTeclado) == 2) {
 						System.out.println("Show statistics here");
 						TopTrumpsModel.setUserWantsToQuit(true);
