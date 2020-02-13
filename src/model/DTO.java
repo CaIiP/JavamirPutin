@@ -9,7 +9,7 @@ public class DTO {
 	private int bot3Wins;
 	private int bot4Wins;
 	private int drawCounter;
-	
+
 	public DTO(int gc, int rc, int hw, int b1w, int b2w, int b3w, int b4w, int dc)	{
 		this.gameCounter = gc;
 		this.roundCounter = rc;
@@ -20,7 +20,7 @@ public class DTO {
 		this.bot4Wins = b4w;
 		this.drawCounter = dc;
 	}
-	
+
 	public int getGameCounter() {
 		return gameCounter;
 	}

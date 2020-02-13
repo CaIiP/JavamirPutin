@@ -2,6 +2,7 @@ package commandline;
 
 import model.Card;
 import model.CommunalPile;
+import model.DTO;
 import model.Game;
 import model.Player;
 import model.TopTrumpsModel;
@@ -23,6 +24,7 @@ import controller.TopTrumpsCAController;
 public class TopTrumpsCLIApplication {
 	private static ArrayList<Card> Deck;
 	private static String[] CompPlayerNames = { "BotOne", "BotTwo", "BotThree", "BotFour" };
+//	private DTO dto;
 
 	// main
 	public static void main(String[] args) {
@@ -46,20 +48,19 @@ public class TopTrumpsCLIApplication {
 			// Add your game logic here based on the requirements
 			// ----------------------------------------------------
 			System.out.println(
-					"Please choose 1 if you want to play or 2 if you want to see the statistics, if you choose another option the program will close");
+					"Please choose 1 if you want to play or 2 if you want to see the statistics");
 			String startInput;
 			Scanner startScanner = new Scanner(System.in);
 			startInput = startScanner.nextLine();			
 			if (TopTrumpsCAController.isNumeric(startInput)) {
 				if(startInput.equals("1")) {
-
 					TopTrumpsModel.setUserWantsToQuit(true);
 					Controller C = new Controller(5); //start game with 5 players 
 					index++;
+					TopTrumpsModel.setUserWantsToQuit(false);
 				}
 				else if(startInput.equals("2")) {
 					System.out.println("Here the statistics will be shown");
-
 					TopTrumpsModel.setUserWantsToQuit(false);
 				}
 			}

@@ -6,7 +6,7 @@ public class GameStats {
 	private int humanWins;
 	private int botWins;
 	private int totalNumGames;
-	
+
 	public int getDrawAvg() {
 		return drawAvg;
 	}
@@ -37,13 +37,13 @@ public class GameStats {
 	public void setTotalNumGames(int totalNumGames) {
 		this.totalNumGames = totalNumGames;
 	}
-	
+
 	public String toString()	{
 		return "Average number of draws = " + drawAvg + "\n" 
-							+ "Number of rounds in longest game = " + largestRoundNum + "\n" 
-							+ "Total Human Wins = " + humanWins + "\n" 
-							+ "Total Bot Wins = " + botWins + "\n"
-							+ "Total number of Games = " + totalNumGames + "\n";
+				+ "Number of rounds in longest game = " + largestRoundNum + "\n" 
+				+ "Total Human Wins = " + humanWins + "\n" 
+				+ "Total Bot Wins = " + botWins + "\n"
+				+ "Total number of Games = " + totalNumGames + "\n";
 	}
 }
 
