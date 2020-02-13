@@ -7,15 +7,10 @@ import model.Card;
 import model.Player;
 import model.Round;
 import model.TopTrumpsModel;
-import model.DTO;
 import view.RoundView;
 import view.TopTrumpsCAView;
 
-
 public class TopTrumpsCAController {
-	DTO dto = new DTO(0, 0, 0, 0, 0, 0, 0, 0);
-	
-	//method to create both computer and human players
 	public void createplayers(TopTrumpsModel TopTrumps) {
 		Player Human = new Player(TopTrumps.getUser_name());// object human
 		TopTrumps.getNewPlayers()[0] = Human;
@@ -33,7 +28,6 @@ public class TopTrumpsCAController {
 
 	}
 
-	//method to check if a string is a number
 	public static boolean isNumeric(String cadena) {
 		boolean result;
 
@@ -47,73 +41,53 @@ public class TopTrumpsCAController {
 		return result;
 	}
 
-	//method which allows the human player to select their desired card attribute
-	public void UserPicking(TopTrumpsCLIApplication TopTrumps,TopTrumpsModel TopTrumpsModel) {
+	// Function that is used for the human player to decide with what player
+	// attribute in the current round
+	public void UserPicking(TopTrumpsModel TopTrumpsModel) {
 		// The user is requested to enter the corresponding values
 		System.out.println(
 				"Please choose what attribute you want to take for the round: Size choose 1, Speed choose 2, Range choose 3, FirePower choose 4, Cargo choose 5");
 		String entradaTeclado;
 		Scanner entradaEscaner = new Scanner(System.in);
 		entradaTeclado = entradaEscaner.nextLine();
+
 		if (isNumeric(entradaTeclado)) {
 			switch (entradaTeclado) {
 			case "1":
-				playRound(1,TopTrumps,TopTrumpsModel);
+				playRound(1,TopTrumpsModel);
 				break;
 			case "2":
-				playRound(2,TopTrumps,TopTrumpsModel);
+				playRound(2,TopTrumpsModel);
 				break;
 			case "3":
-				playRound(3,TopTrumps,TopTrumpsModel);
+				playRound(3,TopTrumpsModel);
 				break;
 			case "4":
-				playRound(4,TopTrumps,TopTrumpsModel);
+				playRound(4,TopTrumpsModel);
 				break;
 			case "5":
-				playRound(5,TopTrumps,TopTrumpsModel);
+				playRound(5,TopTrumpsModel);
 				break;
 			default:
 				System.out.println("You must choose an attribute based on those available to play");
-				UserPicking(TopTrumps,TopTrumpsModel);
+				UserPicking(TopTrumpsModel);
 				break;
 			}
 		} else {
 			System.out.println("You must place a numeric value between the given values in order to play");
-			UserPicking(TopTrumps,TopTrumpsModel);
+			UserPicking(TopTrumpsModel);
 		}
 	}
 
-	//method that checks if the game is over, then presents options to start a new game or view statistics
-	public void checkIfGameOver(TopTrumpsCLIApplication TopTrumps,TopTrumpsModel TopTrumpsModel) {
+	public void checkIfGameOver(TopTrumpsModel TopTrumpsModel) {
 		int pass = 0;
 		for (int i = 0; i < TopTrumpsModel.getNumPlayers(); i++) {
 			Player user = TopTrumpsModel.getRound().getPlayers()[i];
 			int length = user.getHand().length;
 			if (length == 40) {
 				System.out.println("Game over, Win " + user.getName());
-				if (user.getName() == "Human")	{
-					dto.setHumanWins(dto.getHumanWins() + 1);
-			
-				}
-				else if (user.getName() == "BotOne")	{
-					dto.setBot1wins(dto.getBot1wins() + 1);
-				
-				}
-				else if (user.getName() == "BotTwo")	{
-					dto.setBot2wins(dto.getBot2wins() + 1);
-				
-				}
-				else if (user.getName() == "BotThree")	{
-					dto.setBot3wins(dto.getBot3wins() + 1);
-				
-				}
-				else {
-					dto.setBot4wins(dto.getBot4wins() + 1);
-					
-				}
-				System.out.println("If you want to play again please press 1. If you want to show the statistics of the game please press 2.");
-				dto.setGameCounter(dto.getGameCounter()+1);		//increase gameCounter by 1 with each win
-			
+				System.out.println(
+						"If you want to play again option 1 if you want to show the statistics of the game option 2, if you select another option the game will end");
 				String entradaTeclado;
 				Scanner entradaEscaner = new Scanner(System.in);
 				entradaTeclado = entradaEscaner.nextLine();
@@ -123,8 +97,6 @@ public class TopTrumpsCAController {
 					} else if (Integer.parseInt(entradaTeclado) == 2) {
 						System.out.println("Show statistics here");
 						TopTrumpsModel.setUserWantsToQuit(true);
-						TopTrumpsModel.statWrite(dto);
-						TopTrumpsModel.statView();
 					} else {
 						TopTrumpsModel.setUserWantsToQuit(true);
 					}
@@ -133,17 +105,17 @@ public class TopTrumpsCAController {
 				break;
 			}
 		}
+
 		if (pass == 0) {
 			if (TopTrumpsModel.getDecidingPlayer().getName().equals(TopTrumpsModel.getUser_name())) {
-				UserPicking(TopTrumps,TopTrumpsModel);
+				UserPicking(TopTrumpsModel);
 			} else {
-				playRound(0,TopTrumps,TopTrumpsModel);
+				playRound(0,TopTrumpsModel);
 			}
 		}
 	}
 
-	//method that contains all logic for the round of a game
-	public void playRound(int trumpIndex,TopTrumpsCLIApplication TopTrumps,TopTrumpsModel TopTrumpsModel) {
+	public void playRound(int trumpIndex,TopTrumpsModel TopTrumpsModel) {
 		Round CurrRound;
 		RoundController roundC = new RoundController();
 		RoundView roundV = new RoundView();
@@ -171,11 +143,8 @@ public class TopTrumpsCAController {
 		System.out.println(displayText);
 		if (TopTrumpsModel.getRound().isDraw()) {
 			TopTrumpsModel.getGame().setNumDraws(TopTrumpsModel.getGame().getNumDraws() + 1);
-			dto.setDrawCounter(dto.getDrawCounter() + 1);	//Increases draw counter by 1 every time there is a draw
 		}
 		TopTrumpsModel.getGame().setNumRounds(TopTrumpsModel.getGame().getNumRounds() + 1);
-		dto.setRoundCounter(dto.getRoundCounter() + 1);		//Increases round counter by 1 every time a round ends
-		
 
 		Player user = TopTrumpsModel.getPlayers()[0];
 		String UserCardInfo;
@@ -218,7 +187,8 @@ public class TopTrumpsCAController {
 			break;
 		}
 
-		this.checkIfGameOver(TopTrumps,TopTrumpsModel);
+		this.checkIfGameOver(TopTrumpsModel);
 	}
 
 }
+
