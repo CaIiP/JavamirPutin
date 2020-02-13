@@ -32,14 +32,14 @@ public class TopTrumpsCLIApplication {
 		}
 		TopTrumpsModel TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",false,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
 		TopTrumpsCLIApplication TopTrumps = new TopTrumpsCLIApplication();
-		
-																											
+
+
 		// Loop until the user wants to exit the game
 		int index = 0;
 		while (!TopTrumpsModel.isUserWantsToQuit()) {
 			if(index != 0) {
 				TopTrumps = new TopTrumpsCLIApplication();// The class
-			//	TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",true,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
+				//	TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",true,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
 			}
 
 			// ----------------------------------------------------
@@ -59,14 +59,12 @@ public class TopTrumpsCLIApplication {
 				}
 				else if(startInput.equals("2")) {
 					System.out.println("Here the statistics will be shown");
-					
+
 					TopTrumpsModel.setUserWantsToQuit(false);
 				}
 			}
 		}
-
 	}
-
 }
 
 
