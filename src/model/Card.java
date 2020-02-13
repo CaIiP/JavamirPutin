@@ -32,6 +32,7 @@ public class Card {
 		  this.firepower = Integer.parseInt(splitLine[3]);
 		  this.speed = Integer.parseInt(splitLine[4]);
 		  this.range = Integer.parseInt(splitLine[5]);
+
 	}
 	
 	//getters and setters 
@@ -81,4 +82,5 @@ public class Card {
 	public void setRange(int range) {
 		this.range = range;
 	}
+ 
 }

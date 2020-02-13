@@ -5,7 +5,6 @@ public class Game {
     //attributes
 	private int numDraws;
 	private int numRounds;
-	
 
 	// Constructor
 	public Game(int numDraws, int numRounds) {

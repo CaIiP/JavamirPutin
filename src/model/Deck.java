@@ -6,9 +6,7 @@ public class Deck {
 	//Instance variables
     //attributes
 	
-	private ArrayList<Card> Deck = new ArrayList<Card>();
-	private Deck deck = new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo");
-	
+	private ArrayList<Card> deck = new ArrayList<Card>();
 	private String size;
 	private String speed;
 	private String firepower;
@@ -67,18 +65,10 @@ public class Deck {
 	}
 
 	public ArrayList<Card> getDeck() {
-		return Deck;
-	}
-
-	public void setDeck(ArrayList<Card> Deck) {
-		this.Deck = Deck;
-	}
-	
-	public Deck getdeck() {
 		return deck;
 	}
 
-	public void setDeck(Deck deck) {
+	public void setDeck(ArrayList<Card> deck) {
 		this.deck = deck;
 	}
 
