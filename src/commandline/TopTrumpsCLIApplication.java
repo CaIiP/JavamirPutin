@@ -10,6 +10,7 @@ import model.Deck;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import controller.Controller;
 import controller.DeckController;
@@ -40,21 +41,32 @@ public class TopTrumpsCLIApplication {
 				TopTrumps = new TopTrumpsCLIApplication();// The class
 			//	TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",true,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
 			}
-			
+
 			// ----------------------------------------------------
 			// Add your game logic here based on the requirements
 			// ----------------------------------------------------
-			TopTrumpsModel.setUserWantsToQuit(true);
-			Controller C = new Controller(5); //start game with 5 players 
-			index++;
+			System.out.println(
+					"Please choose 1 if you want to play or 2 if you want to see the statistics, if you choose another option the program will close");
+			String startInput;
+			Scanner startScanner = new Scanner(System.in);
+			startInput = startScanner.nextLine();			
+			if (TopTrumpsCAController.isNumeric(startInput)) {
+				if(startInput.equals("1")) {
+
+					TopTrumpsModel.setUserWantsToQuit(true);
+					Controller C = new Controller(5); //start game with 5 players 
+					index++;
+				}
+				else if(startInput.equals("2")) {
+					System.out.println("Here the statistics will be shown");
+					
+					TopTrumpsModel.setUserWantsToQuit(false);
+				}
+			}
 		}
+
 	}
 
-	
-	
-	
-	
-	
-
 }
+
 
