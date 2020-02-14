@@ -18,16 +18,216 @@
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-	</head>
-
-    <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
-    	
-    	<div class="container">
-
-			<!-- Add your HTML Here -->
 	
-		</div>
+          
+    </div>
+
+ 
+   <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
+<header>
+    <div class="header">
+        <center><h1 style="background-color:#000FFF; font-size:40px; color:#FFFFFF; text-align:center; padding:20px">Top Trumps Game</h1></center>
+    </header>
+</div>
+
+
+<body>
+        <style>
+          
+          body {
+              background-color: lightblue;
+            }
+
+            .footer {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background-color: #4d4d4d;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 14px;
+        }
+
+    </style>
+            <body>
+    	         <style>
+
+                       .categoryButtons {
+                        position: absolute;
+                        center: 300;
+                        font: bold;
+                        text-align: center;
+                        color: white;
+                   
+
+                    £nextButton {
+                        position: absolute;
+                        right: 0;
+                        bottom: 300;
+                        left: 1100;
+                        font: bold;
+                        text-align: center;
+                    }
+                    .container-fluid.middle{
+                      background-color: F2F1CD;
+                    }
+         </style>
+  
+  </div>
+
+ <div class = "container">
+                    <div class="mx-auto" style="width: 200px;">
+        <div class="card border-danger mb-3" style="width: 18rem;">
+                <div class="card-header text-center text-white bg-danger mb-3" style="max-width: 18rem;">
+                    <h5 id="currentPlayer"></h5>
+                    <p id="communalPile"></p>
+                    <p id="roundNumber"></p>
+                </div>
+                <div class="card-body text-center">
+                        <h5 id="outcomeA"></h5><br/>
+                        <p id="outcomeB"></p>
+                    </div>
+                  </div><br/><br/>
+    </div>
+    
+    <div class="container">	
+		<div id="playing-cards" class="container">
+    <div class="card-deck">
+    <div  class="card border-success" id="card1" style="width: 18rem;">
+            <div class="card-header text-white text-center bg-success mb-3" style="max-width: 18rem;">
+                <h5>Player 1</h5>
+                <p id="numberCard1"></p>
+            </div>
+            <div class="card-name text-center">
+                    <h5 id="cardName1"></h5>
+                </div>
+                
+                <div class="card-body">
+                  
+                  <p class="card-attributes">
+                    <ul>
+                        <li id="attribute1"></li>
+                        <li id="attribute2"></li>
+                        <li id="attribute3"></li>
+                        <li id="attribute4"></li>
+                        <li id="attribute5"></li>
+                      </ul>
+                  </p>
+                </div>
+              </div>
 		
+              <div class="card border-warning" id="card2" style="width: 18rem;">
+                    <div class="card-header text-center text-white bg-warning mb-3" style="max-width: 18rem;">
+                        <h5>Player 2</h5>
+                        <p id="numberCard2"></p>
+                    </div>
+                    <div class="card-name text-center">
+                        <h5 id="cardName2"></h5>
+       
+                        </div>
+                        <div class="card-body">
+                          
+                          <p class="card-attributes">
+                              <ul>
+                        <li id="attribute"></li>
+                        <li id="attribute"></li>
+                        <li id="attribute7"></li>
+                        <li id="attribute8"></li>
+                        <li id="attribute9"></li>
+                              </ul>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="card border-warning" style="width: 18rem;">
+                            <div class="card-header text-center text-white bg-warning mb-2" id="card3" style="max-width: 18rem;">
+                                <h5>Player 3</h5>
+                                <p id="numberCard3"></p>
+                            </div>
+                            <div class="card-name text-center">
+                                <h5 id="cardName3"></h5>
+                                </div>
+                                <div class="card-body">
+                                  
+                                  <p class="card-attributes">
+                                      <ul>
+                                          <li id="attributeC1"></li>
+                                          <li id="attribute10"></li>
+                                          <li id="attribute11"></li>
+                                          <li id="attribute12"></li>
+                                          <li id="attribute13"></li>
+                                      </ul>
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div class="card border-warning" style="width: 18rem;">
+                                    <div class="card-header text-center text-white bg-warning mb-3" id="card4" style="max-width: 18rem;">
+                                        <h5>Player 4</h5>
+                                        <p id="numberCard4"></p>
+                                    </div>
+                                    <div class="card-name text-center">
+                                        <h5 id="cardName4"></h5>
+                                        </div>
+                                        <div class="card-body">
+                                          
+                                          <p class="card-attributes">
+                                              <ul>
+                                              <li id="attributeD1"></li>
+                                              <li id="attribute14"></li>
+                                              <li id="attribute15"></li>
+                                              <li id="attribute16"></li>
+                                              <li id="attribute17"></li>
+                                              </ul>
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      <div class="card border-warning" style="width: 18rem;">
+                                            <div class="card-header text-center text-white bg-warning mb-3"  style="max-width: 18rem;">
+                                                <h5>Player 5</h5>
+                                                <p id="numCard5"></p>
+                                            </div>
+                                            <div class="card-name text-center">
+                                                    <h5 id="cardName5"></h5>
+                                                </div>
+                                                <div class="card-body">
+                                                  
+                                                  <p class="card-attributes">
+                                                      <ul>
+                                                          <li id="attributeE1"></li>
+                                                          <li id="attribute18"></li>
+                                                          <li id="attribute19"></li>
+                                                          <li id="attribute20"></li>
+                                                          <li id="attribute21"></li>
+                                                      </ul>
+                                                  </p>
+                                                </div>
+                                              </div>
+  </div>  
+  
+<center><button type="button" id="nextButton" onclick="nextGame();" class="btn btn-primary btn-lg">Next</button> </center>
+      <center>  <div  class="categoryButtons" id="categoryButtons">  
+          
+   
+                                  
+        <button id="sizeButton" onclick="getPlayerName()" >Size</button>
+        <button id="speedButton" onclick="response(1); Categoty();">Speed</button>
+        <button id="rangeButton" onclick="response(2); Category();">Range</button>
+        <button id="firePower" onclick="response(3); Category();">Firepower</button>
+        <button id="cargoButton" onclick="response(4); Category();">Cargo</button>
+        </center>
+    </div>  </div><br/><br/>
+    
+
+
+      
+<div class="footer"><center>
+            Presented by Javamir Putin </br>Shannen Harper 2095119H - Calum Paterson 2040455P - Fara Stringfellow 2131715S - Rija Fatima 2229772F - Xiaoxu Mo 2425782M </center>
+        </div>
 		<script type="text/javascript">
 		
 			// Method that is called on page load
@@ -38,8 +238,10 @@
 				// --------------------------------------------------------------------------
 				
 				// For example, lets call our sample methods
-				helloJSONList();
-				helloWord("Student");
+				//helloJSONList();
+				//helloWord(1);
+	
+				
 				
 			}
 			
@@ -100,6 +302,8 @@
 			}
 			
 			// This calls the helloJSONList REST method from TopTrumpsRESTAPI
+			
+			
 			function helloWord(word) {
 			
 				// First create a CORS request, this is the message we are going to send (a get request in this case)
@@ -120,7 +324,38 @@
 				// We have done everything we need to prepare the CORS request, so send it
 				xhr.send();		
 			}
+			
+			
+			
+ 			
+ 		function getPlayerName() {
+			
+				// First create a CORS request, this is the message we are going to send (a get request in this case)
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/playerName"); // Request type and URL
+				
+				// Message is not sent yet, but we can check that the browser supports CORS
+				if (!xhr) {
+  					alert("CORS not supported");
+				}
 
+				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
+				// to do when the response arrives 
+				xhr.onload = function(e) {
+ 					var responseText = xhr.response; // the text of the response
+ 					//alert(responseText);
+				document.getElementById("currentPlayer").innerHTML = responseText;
+				};
+				
+				// We have done everything we need to prepare the CORS request, so send it
+				xhr.send();		
+			}
+ 			
+ 			
+ 			
+ 			function buttonTest() {
+			document.getElementById("currentPlayer").innerHTML = " yass the test worked";
+ 			} 
+ 			
 		</script>
 		
 		</body>

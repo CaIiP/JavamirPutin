@@ -1,8 +1,11 @@
+
+
 package online.dwResources;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -15,6 +18,12 @@ import online.configuration.TopTrumpsJSONConfiguration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+
+import controller.Controller;
+import controller.DeckController;
+import model.Card;
+import model.Deck;
+import model.TopTrumpsModel;
 
 @Path("/toptrumps") // Resources specified here should be hosted at http://localhost:7777/toptrumps
 @Produces(MediaType.APPLICATION_JSON) // This resource returns JSON content
@@ -83,5 +92,18 @@ public class TopTrumpsRESTAPI {
 	public String helloWord(@QueryParam("Word") String Word) throws IOException {
 		return "Hello "+Word;
 	}
+
+	@GET
+	@Path("/selectNumPlayers")	
+	public void selectNumPlayers(@QueryParam("number") int number) throws IOException {
+		ArrayList<Card> Deck = null;
+		String[] CompPlayerNames = { "BotOne", "BotTwo", "BotThree", "BotFour" };
+		TopTrumpsModel TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",false,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
+		Controller c = new Controller(number);
+	
+	}
+	
+
+	
 	
 }

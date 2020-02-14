@@ -19,24 +19,19 @@ public class TopTrumpsCAController {
 	public void createplayers(TopTrumpsModel TopTrumps) {
 		Player Human = new Player(TopTrumps.getUser_name());// object human
 		TopTrumps.getNewPlayers()[0] = Human;
-
 		for (int i = 1; i < TopTrumps.getNumPlayers(); i++) {
 			TopTrumps.getNewPlayers()[i] = new Player(TopTrumps.getCompPlayerNames()[i - 1]);
 		}
 		TopTrumps.setPlayers(TopTrumps.getNewPlayers());
 	}
-
 	public Player decidingPlayer(TopTrumpsModel TopTrumps) {
 		int decidingPlayerIndex = TopTrumps.getRand().nextInt(TopTrumps.getPlayers().length);
 
 		return TopTrumps.getPlayers()[decidingPlayerIndex];
-
 	}
-
 	//method to check if a string is a number
 	public static boolean isNumeric(String cadena) {
 		boolean result;
-
 		try {
 			Integer.parseInt(cadena);
 			result = true;
@@ -93,23 +88,18 @@ public class TopTrumpsCAController {
 				System.out.println("Game over, Win " + user.getName());
 				if (user.getName() == "Human")	{
 					dto.setHumanWins(dto.getHumanWins() + 1);
-
 				}
 				else if (user.getName() == "BotOne")	{
 					dto.setBot1wins(dto.getBot1wins() + 1);
-
 				}
 				else if (user.getName() == "BotTwo")	{
 					dto.setBot2wins(dto.getBot2wins() + 1);
-
 				}
 				else if (user.getName() == "BotThree")	{
 					dto.setBot3wins(dto.getBot3wins() + 1);
-
 				}
 				else {
 					dto.setBot4wins(dto.getBot4wins() + 1);
-
 				}
 				System.out.println("If you want to play again please press 1. If you want to show the statistics of the game please press 2.");
 				dto.setGameCounter(dto.getGameCounter()+1);		//increase gameCounter by 1 with each win
@@ -120,7 +110,7 @@ public class TopTrumpsCAController {
 				if (isNumeric(entradaTeclado)) {
 					if (Integer.parseInt(entradaTeclado) == 1) {
 						TopTrumpsModel.setUserWantsToQuit(false);
-						TopTrumpsModel.statWrite(dto);
+						//TopTrumpsModel.statWrite(dto);
 					} else if (Integer.parseInt(entradaTeclado) == 2) {
 						System.out.println("Show statistics here");
 						TopTrumpsModel.statWrite(dto);
@@ -195,7 +185,6 @@ public class TopTrumpsCAController {
 			UserCardInfo = CardDescription + CardAttribute1 + CardAttribute2 + CardAttribute3 + CardAttribute4
 					+ CardAttribute5;
 		}
-
 		System.out
 		.println("Cards left in hand: " + TopTrumpsModel.getPlayers()[0].getHand().length + "\nCurrent card: " + UserCardInfo);
 		switch (TopTrumpsModel.getPlayers().length) {

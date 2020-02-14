@@ -6,16 +6,13 @@ public class TopTrumps {
 
 	/** This is the main class for the TopTrumps Applications */
 	public static void main(String[] args) {
-
 		System.out.println("--------------------");
 		System.out.println("--- Top Trumps   ---");
 		System.out.println("--------------------");
-
 		// command line switches
 		boolean onlineMode = false;
 		boolean commandLineMode = false;
 		boolean printTestLog = false;
-
 		// check the command line for what switches are active
 		for (String arg : args) {
 

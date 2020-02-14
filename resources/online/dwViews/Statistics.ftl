@@ -16,17 +16,58 @@
     	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex.css"/>
     	<link rel="stylesheet" href="http://dcs.gla.ac.uk/~richardm/assets/stylesheets/vex-theme-os.css"/>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+          
+    </div>
 
-	</head>
+      <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
+<header>
+    <div class="header">
+        <center><h1 style="background-color:#000FFF; font-size:40px; color:#FFFFFF; text-align:center; padding:20px">Top Trumps Game</h1></center>
+    </header>
+</div>
 
-    <body onload="initalize()"> <!-- Call the initalize method when the page loads -->
-    	
-    	<div class="container">
+<body>
+        <style>
+          
+          body {
+              background-color: lightblue;
+            }
 
-			<!-- Add your HTML Here -->
-		
-		</div>
+            .footer {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background-color: #4d4d4d;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 14px;
+        }
+
+    </style>
+
+<center><div style="float:center; margin: 30px; padding: 20px; height: 400px; width: 400px;background: #FAF55A; class="table">
+    <div class="text-center text-black mb-3">
+                <p><h5 style="Font-size:20px; text-align:center;"> Your game statistics are:</h5></p>
+                <p><h7>Average Number of Draws:</h7><h7 id="drawNumber"></h7></p>
+                <p><h7>Number of Human Wins:</h7><h7 id="humanWin"></h7></p>
+                <p><h7>Number of AI Wins:</h7><h7 id="aiWin"></h7></p>
+                <p><h7>Number of Rounds in Longest Game:</h7><h7 id="rounds"></h7></p>
+                <p><h7>Total number of games played:</h7><h7 id="maxGame"></h7></p></br>
+                <button id="MenuBtn" onclick="location.href='http://localhost:7777/toptrumps/'">Back to Main Menu</button></center>
+            </div>
+    
+        </div>
+    
+
+
+
+<div class="footer"><center>
+            Presented by Javamir Putin </br>Shannen Harper 2095119H - Calum Paterson 2040455P - Fara Stringfellow 2131715S - Rija Fatima 2229772F - Xiaoxu Mo 2425782M </center>
+        </div>
 		
 		<script type="text/javascript">
 		
@@ -38,8 +79,8 @@
 				// --------------------------------------------------------------------------
 				
 				// For example, lets call our sample methods
-				helloJSONList();
-				helloWord("Student");
+				//helloJSONList();
+				//helloWord("Student");
 				
 			}
 			
