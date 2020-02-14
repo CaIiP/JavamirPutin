@@ -35,11 +35,11 @@ public class Database {
 	private int totalNumGames = 0;
 
 	//SQL queries for retrieving stats from database
-	String Q_getGamesPlayed = "SELECT COUNT (game_total) AS totalGames FROM game_stats";
-	String Q_getBotWins = "SELECT COUNT (bot_win_total) AS botTotal FROM game_stats";
-	String Q_getHumanWins = "SELECT COUNT (human_win_total) AS humanTotal FROM game_stats";
-	String Q_getAvgDrawNum = "SELECT AVG(draw_total) AS drawAverage FROM game_stats";
-	String Q_getLongestGame = "SELECT MAX(rounds_in_game) AS mostRounds FROM game_stats";
+	String Q_getGamesPlayed = "SELECT COUNT (totalgames) AS totalGames FROM game_stats";
+	String Q_getBotWins = "SELECT SUM (COALESCE(totalbot1wins,0) + COALESCE(totalbot2wins,0) + COALESCE(totalbot3wins,0) + COALESCE(totalbot4wins,0)) AS botTotal FROM game_stats";
+	String Q_getHumanWins = "SELECT SUM (totalhumanwins) AS humanTotal FROM game_stats";
+	String Q_getAvgDrawNum = "SELECT AVG(totaldraws) AS drawAverage FROM game_stats";
+	String Q_getLongestGame = "SELECT MAX(totalrounds) AS mostRounds FROM game_stats";
 	
 
 	public Connection dbConnect()	{	//Method that connects to database
