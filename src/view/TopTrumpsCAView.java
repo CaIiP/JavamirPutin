@@ -9,38 +9,37 @@ public class TopTrumpsCAView {
 		String WhoseTurn = String.format("Current player turn: %s%n%n", TopTrumps.getDecidingPlayer().getName());
 		System.out.println(WhoseTurn);
 	}
+	//
 	public void showCurrentCard(TopTrumpsModel TopTrumps) {
 		String UserCardInfo;
 		Player user = TopTrumps.getPlayers()[0];
 		if (user.getHand().length == 0) {
 			String s = String.format(TopTrumps.getUser_name() + " have no cards left.\n\n");
 			UserCardInfo = s;
+			//prints humans current card
 		} else {
 			Card UserCurrentCard = user.getHand()[0];
 			String CardDescription = String.format("%s%n", UserCurrentCard.getName());
 			String CardAttribute1 = String.format("%s: %s   ", TopTrumps.getDeck().getSize(), UserCurrentCard.getSize());
-			String CardAttribute2 = String.format("%s: %s   ", TopTrumps.getDeck().getSpeed(),
-					UserCurrentCard.getSpeed());
-			String CardAttribute3 = String.format("%s: %s   ", TopTrumps.getDeck().getRange(),
-					UserCurrentCard.getRange());
-			String CardAttribute4 = String.format("%s: %s   ", TopTrumps.getDeck().getFirepower(),
-					UserCurrentCard.getFirepower());
-			String CardAttribute5 = String.format("%s: %s   %n%n", TopTrumps.getDeck().getCargo(),
-					UserCurrentCard.getCargo());
-			UserCardInfo = CardDescription + CardAttribute1 + CardAttribute2 + CardAttribute3 + CardAttribute4
-					+ CardAttribute5;
+			String CardAttribute2 = String.format("%s: %s   ", TopTrumps.getDeck().getSpeed(),UserCurrentCard.getSpeed());
+			String CardAttribute3 = String.format("%s: %s   ", TopTrumps.getDeck().getRange(),UserCurrentCard.getRange());
+			String CardAttribute4 = String.format("%s: %s   ", TopTrumps.getDeck().getFirepower(),UserCurrentCard.getFirepower());
+			String CardAttribute5 = String.format("%s: %s   %n%n", TopTrumps.getDeck().getCargo(),UserCurrentCard.getCargo());
+			UserCardInfo = CardDescription + CardAttribute1 + CardAttribute2 + CardAttribute3 + CardAttribute4 + CardAttribute5;
 		}
 		System.out.println("Current card: " + UserCardInfo);
-		
+	// SHUFFLED DECK
+		//PRINTS OUT ATTRIBUTE TITLES
 		System.out.println();
 		String attribute1 = TopTrumps.getDeck().getSize();
 		String attribute2 = TopTrumps.getDeck().getSpeed();
 		String attribute3 = TopTrumps.getDeck().getRange();
 		String attribute4 = TopTrumps.getDeck().getFirepower();
 		String attribute5 = TopTrumps.getDeck().getCargo();
-		String attributeNameString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", "",
+		String attributeNameString = String.format("%20.20s %15.15s %15.15s "+  "%15.15s %15.15s %15.15s", "",
 				attribute1, attribute2, attribute3, attribute4, attribute5);
 		System.out.println(attributeNameString);
+		//PRINTS OUT SHOUFFLED DECK of cards (name and values)
 		for (int i = 0; i < TopTrumps.getNo_cards(); i++) {
 			Card CurrentCard = TopTrumps.getdeck().get(i);
 			String nameValue = CurrentCard.getName();
@@ -57,6 +56,7 @@ public class TopTrumpsCAView {
 		System.out.println();
 	}
 	
+	//prints current hands of all players
 	public void CardsBelonging(TopTrumpsModel TopTrumps) {
 		for (Player P : TopTrumps.getPlayers()) {
 			System.out.println("-------------------------------------");

@@ -22,7 +22,9 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import controller.Controller;
 import controller.DeckController;
 import model.Card;
+import model.DTO;
 import model.Deck;
+import model.Round;
 import model.TopTrumpsModel;
 
 @Path("/toptrumps") // Resources specified here should be hosted at http://localhost:7777/toptrumps
@@ -93,14 +95,21 @@ public class TopTrumpsRESTAPI {
 		return "Hello "+Word;
 	}
 
+	
+
 	@GET
 	@Path("/selectNumPlayers")	
-	public void selectNumPlayers(@QueryParam("number") int number) throws IOException {
+	public int selectNumPlayers(@QueryParam("number") int number) throws IOException {
 		ArrayList<Card> Deck = null;
 		String[] CompPlayerNames = { "BotOne", "BotTwo", "BotThree", "BotFour" };
 		TopTrumpsModel TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",false,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
+
+		DTO dto = new DTO(0,0,0,0,0,0,0,0);
 		Controller c = new Controller(number);
-	
+		int roundNumber = dto.getRoundCounter();
+		return roundNumber;
+		
+
 	}
 	
 

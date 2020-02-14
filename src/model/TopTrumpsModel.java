@@ -17,7 +17,7 @@ public class TopTrumpsModel {
 	private ArrayList<Card> Deck;
 	private Deck deck;
 	private Player[] Players;
-	private Player decidingPlayer;
+	private Player decidingPlayer; 
 	private Player[] NewPlayers;
 	private Game Game;
 	private Round Round;

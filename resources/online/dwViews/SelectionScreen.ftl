@@ -106,8 +106,10 @@
 				// --------------------------------------------------------------------------
 				
 				// For example, lets call our sample methods
-				//helloJSONList();
-				//helloWord("Student");
+				helloJSONList();
+				helloWord("Student");
+				selectNumPlayers(5);
+				
 				
 			}
 			
@@ -197,8 +199,12 @@
   					alert("CORS not supported");
 				}
 				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
-					//Controller(number);
+ 					var responseText = xhr.response; 
+					alert(responseText)
+					// the text of the response in java (use JSON.parse( var responseText = xhr.response) to turn into javascript
+ 					//var numberOfPlayers = JSON.parse(responseText);
+ 					//var document.getElementById("numberOfPlayers").innerHTML =
+					
 				};
 				xhr.send();		
 			}

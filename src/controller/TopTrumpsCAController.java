@@ -24,11 +24,16 @@ public class TopTrumpsCAController {
 		}
 		TopTrumps.setPlayers(TopTrumps.getNewPlayers());
 	}
+	
+	
 	public Player decidingPlayer(TopTrumpsModel TopTrumps) {
 		int decidingPlayerIndex = TopTrumps.getRand().nextInt(TopTrumps.getPlayers().length);
 
 		return TopTrumps.getPlayers()[decidingPlayerIndex];
 	}
+	
+	
+	
 	//method to check if a string is a number
 	public static boolean isNumeric(String cadena) {
 		boolean result;
@@ -43,15 +48,15 @@ public class TopTrumpsCAController {
 	}
 
 	//method which allows the human player to select their desired card attribute
-	public void UserPicking(TopTrumpsModel TopTrumpsModel) {
+	public void UserPicking(TopTrumpsModel TopTrumpsModel ) {
 		// The user is requested to enter the corresponding values
 		System.out.println(
 				"Please choose what attribute you want to take for the round: Size choose 1, Speed choose 2, Range choose 3, FirePower choose 4, Cargo choose 5");
-		String entradaTeclado;
-		Scanner entradaEscaner = new Scanner(System.in);
-		entradaTeclado = entradaEscaner.nextLine();
-		if (isNumeric(entradaTeclado)) {
-			switch (entradaTeclado) {
+		String attInput;
+		Scanner attScanner = new Scanner(System.in);
+		attInput = attScanner.nextLine();
+		if (isNumeric(attInput)) {
+			switch (attInput) {
 			case "1":
 				playRound(1,TopTrumpsModel);
 				break;
@@ -104,14 +109,13 @@ public class TopTrumpsCAController {
 				System.out.println("If you want to play again please press 1. If you want to show the statistics of the game please press 2.");
 				dto.setGameCounter(dto.getGameCounter()+1);		//increase gameCounter by 1 with each win
 
-				String entradaTeclado;
-				Scanner entradaEscaner = new Scanner(System.in);
-				entradaTeclado = entradaEscaner.nextLine();
-				if (isNumeric(entradaTeclado)) {
-					if (Integer.parseInt(entradaTeclado) == 1) {
+				String newGameInput;
+				Scanner newGameScanner = new Scanner(System.in);
+				newGameInput = newGameScanner.nextLine();
+				if (isNumeric(newGameInput)) {
+					if (Integer.parseInt(newGameInput) == 1) {
 						TopTrumpsModel.setUserWantsToQuit(false);
-						//TopTrumpsModel.statWrite(dto);
-					} else if (Integer.parseInt(entradaTeclado) == 2) {
+					} else if (Integer.parseInt(newGameInput) == 2) {
 						System.out.println("Show statistics here");
 						TopTrumpsModel.statWrite(dto);
 						TopTrumpsModel.statView();
@@ -128,7 +132,9 @@ public class TopTrumpsCAController {
 			if (TopTrumpsModel.getDecidingPlayer().getName().equals(TopTrumpsModel.getUser_name())) {
 				UserPicking(TopTrumpsModel);
 			} else {
-				playRound(0,TopTrumpsModel);
+				System.out.print("Press ENTER to continue to next round");
+				new Scanner(System.in).nextLine();
+			playRound(0,TopTrumpsModel);
 			}
 		}
 	}
@@ -138,6 +144,8 @@ public class TopTrumpsCAController {
 		Round CurrRound;
 		RoundController roundC = new RoundController();
 		RoundView roundV = new RoundView();
+		
+		//
 		CurrRound = new Round(TopTrumpsModel.getPlayers(), TopTrumpsModel.getDecidingPlayer(), TopTrumpsModel.getCurrentPile(), trumpIndex, TopTrumpsModel.getDeck(), TopTrumpsModel.getNo_cards());
 		if (trumpIndex == 0) {
 			CurrRound.setIndex(roundC.getIndex(TopTrumpsModel.getDecidingPlayer(), CurrRound.getATTR()));
@@ -207,8 +215,9 @@ public class TopTrumpsCAController {
 			System.out.println("Bot 4 Cards left in hand:\n" + TopTrumpsModel.getPlayers()[4].getHand().length);
 			break;
 		}
-
 		this.checkIfGameOver(TopTrumpsModel);
+	
+		
 	}
 
 }

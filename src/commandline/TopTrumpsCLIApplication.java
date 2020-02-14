@@ -24,8 +24,7 @@ import controller.TopTrumpsCAController;
 public class TopTrumpsCLIApplication {
 	private static ArrayList<Card> Deck;
 	private static String[] CompPlayerNames = { "BotOne", "BotTwo", "BotThree", "BotFour" };
-//	private DTO dto;
-
+	
 	// main
 	public static void main(String[] args) {
 		boolean writeGameLogsToFile = false; // Should we write game logs to file?
@@ -61,6 +60,7 @@ public class TopTrumpsCLIApplication {
 				}
 				else if(startInput.equals("2")) {
 					System.out.println("Here the statistics will be shown");
+					TopTrumpsModel.statView();
 					TopTrumpsModel.setUserWantsToQuit(false);
 				}
 			}
