@@ -14,11 +14,12 @@ import view.TopTrumpsCAView;
 
 public class TopTrumpsCAController {
 	DTO dto = new DTO(0, 0, 0, 0, 0, 0, 0, 0);
+	int decidingPlayerIndex;
 
 	//method to create both computer and human players
 	public void createplayers(TopTrumpsModel TopTrumps) {
-		Player Human = new Player(TopTrumps.getUser_name());// object human
-		TopTrumps.getNewPlayers()[0] = Human;
+		Player human = new Player(TopTrumps.getUser_name());// object human
+		TopTrumps.getNewPlayers()[0] = human;
 		for (int i = 1; i < TopTrumps.getNumPlayers(); i++) {
 			TopTrumps.getNewPlayers()[i] = new Player(TopTrumps.getCompPlayerNames()[i - 1]);
 		}
@@ -26,13 +27,14 @@ public class TopTrumpsCAController {
 	}
 	
 	
-	public Player decidingPlayer(TopTrumpsModel TopTrumps) {
-		int decidingPlayerIndex = TopTrumps.getRand().nextInt(TopTrumps.getPlayers().length);
-
+	public Player getRandomPlayer(TopTrumpsModel TopTrumps) {
+		decidingPlayerIndex = TopTrumps.getRand().nextInt(TopTrumps.getPlayers().length);
 		return TopTrumps.getPlayers()[decidingPlayerIndex];
 	}
 	
-	
+	public Player getDecidingPlayer(TopTrumpsModel TopTrumps) {
+		return TopTrumps.getPlayers()[decidingPlayerIndex];
+	}
 	
 	//method to check if a string is a number
 	public static boolean isNumeric(String cadena) {
@@ -83,7 +85,7 @@ public class TopTrumpsCAController {
 		}
 	}
 
-	//method that checks if the game is over, then presents options to start a new game or view statistics
+	//method that checks if the game is over
 	public void checkIfGameOver(TopTrumpsModel TopTrumpsModel) {
 		int pass = 0;
 		for (int i = 0; i < TopTrumpsModel.getNumPlayers(); i++) {
@@ -109,6 +111,8 @@ public class TopTrumpsCAController {
 				System.out.println("If you want to play again please press 1. If you want to show the statistics of the game please press 2.");
 				dto.setGameCounter(dto.getGameCounter()+1);		//increase gameCounter by 1 with each win
 
+				
+				//turn into endGameOptions
 				String newGameInput;
 				Scanner newGameScanner = new Scanner(System.in);
 				newGameInput = newGameScanner.nextLine();
@@ -128,6 +132,8 @@ public class TopTrumpsCAController {
 				break;
 			}
 		}
+		
+		//turn into nextStage method
 		if (pass == 0) {
 			if (TopTrumpsModel.getDecidingPlayer().getName().equals(TopTrumpsModel.getUser_name())) {
 				UserPicking(TopTrumpsModel);

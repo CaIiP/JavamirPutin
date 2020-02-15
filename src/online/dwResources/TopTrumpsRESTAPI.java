@@ -10,6 +10,7 @@ import java.util.Random;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -21,9 +22,11 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import controller.Controller;
 import controller.DeckController;
+import controller.OnlineController;
 import model.Card;
 import model.DTO;
 import model.Deck;
+import model.Player;
 import model.Round;
 import model.TopTrumpsModel;
 
@@ -41,6 +44,8 @@ import model.TopTrumpsModel;
  * methods that allow a TopTrumps game to be controled from a Web page.
  */
 public class TopTrumpsRESTAPI {
+	
+	Controller controller;
 
 	/** A Jackson Object writer. It allows us to turn Java objects
 	 * into JSON strings easily. */
@@ -96,23 +101,48 @@ public class TopTrumpsRESTAPI {
 	}
 
 	
-
+	
 	@GET
-	@Path("/selectNumPlayers")	
-	public int selectNumPlayers(@QueryParam("number") int number) throws IOException {
-		ArrayList<Card> Deck = null;
-		String[] CompPlayerNames = { "BotOne", "BotTwo", "BotThree", "BotFour" };
-		TopTrumpsModel TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",false,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
+	@Path("/newGame/{playerCount}")
+	//first screen api
+	public boolean newGameButton(@PathParam("playerCount") int playerCount)	{
+		controller = new OnlineController(playerCount);
+		return true;
+	}
 
-		DTO dto = new DTO(0,0,0,0,0,0,0,0);
-		Controller c = new Controller(number);
-		int roundNumber = dto.getRoundCounter();
-		return roundNumber;
-		
-
+	//ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
+	//WILL BE NEEDED FOR ARRAYS
+	@GET
+	@Path("/stats")
+	public String gameStatsButton()	{
+		return "";
 	}
 	
-
+	@GET
+	@Path("/currentplayer")
+	public String currentPlayer()	{
+		Player player = controller.getCAController().getDecidingPlayer(controller.getTopTrumpsModel());
+		return player.getName();
+	}
 	
+	//ObjectWriter oWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
+	//WILL BE NEEDED FOR ARRAYS
+	@GET
+	@Path("/currentcards")
+	public String currPlayerCards()	{
+		
+		return "";
+	}
 	
+	@GET
+	@Path("/chooseAttribute/{attributeName}")
+	public String chooseAttributes(@PathParam("attributeName") String attributeName)	{
+		return "";
+	}
+	
+	@GET
+	@Path("/nextStage")
+	public String nextRoundStage()	{
+		return "";
+	}	
 }

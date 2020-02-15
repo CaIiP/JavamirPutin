@@ -61,11 +61,11 @@
     
     <br><a class="btn btn-lg btn-primary text-white text-center" href="/toptrumps/stats" id="statsBtn">Previous Games Statistics</a></br>
     <br><a class="btn btn-lg btn-primary text-white text-center" id="startGameBtn">New Top Trumps Game</a></br>
-    	<p><a  class="numOfPlayers"  id="playerBtns">                                      
-        <button id="players2" onclick="selectNumPlayers(2);" >2 Players</button>
-        <button id="players3" selectNumPlayers(3)>3 Players</button>
-        <button id="players4" selectNumPlayers(4)>4 Players</button>
-        <button id="players5" selectNumPlayers(5) >5 Players</button></p></a>
+    	<p><a  class="numOfPlayers"  id="playerBtns">
+        <button id="players2" onclick ="newGameButton(2);">2 Players</button>
+        <button id="players3" onclick ="newGameButton(3);">3 Players</button>
+        <button id="players4" onclick = "newGameButton(4);">4 Players</button>
+        <button id="players5" onclick = "newGameButton(5);">5 Players</button></p></a>
         </center> 
     			</div>
     		</div>
@@ -100,15 +100,14 @@
 		
 			// Method that is called on page load
 			function initalize() {
+	
 			
 				// --------------------------------------------------------------------------
 				// You can call other methods you want to run when the page first loads here
 				// --------------------------------------------------------------------------
 				
 				// For example, lets call our sample methods
-				helloJSONList();
-				helloWord("Student");
-				selectNumPlayers(5);
+			
 				
 				
 			}
@@ -116,6 +115,24 @@
 			// -----------------------------------------
 			// Add your other Javascript methods Here
 			// -----------------------------------------
+			
+			
+			function newGameButton(playerCount) {
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/newGame/" + playerCount);
+				if (!xhr) {
+  					alert("CORS not supported");
+				}
+				xhr.onload = function(e) {
+ 					var responseText = xhr.response;  
+					window.location = "http://localhost:7777/toptrumps/game/"
+				};
+				
+				// We have done everything we need to prepare the CORS request, so send it
+				xhr.send();		
+			}
+			
+			
+			
 		
 			// This is a reusable method for creating a CORS request. Do not edit this.
 			function createCORSRequest(method, url) {
@@ -188,24 +205,6 @@
 				};
 				
 				// We have done everything we need to prepare the CORS request, so send it
-				xhr.send();		
-			}
-			
-			
-			
-			function selectNumPlayers(number) {
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/selectNumPlayers?number="+number+"&update=true"); // Request type and URL+parameters
-				if (!xhr) {
-  					alert("CORS not supported");
-				}
-				xhr.onload = function(e) {
- 					var responseText = xhr.response; 
-					alert(responseText)
-					// the text of the response in java (use JSON.parse( var responseText = xhr.response) to turn into javascript
- 					//var numberOfPlayers = JSON.parse(responseText);
- 					//var document.getElementById("numberOfPlayers").innerHTML =
-					
-				};
 				xhr.send();		
 			}
 			
