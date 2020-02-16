@@ -6,6 +6,7 @@ import java.util.Scanner;
 import model.Card;
 import model.Player;
 import model.Round;
+import model.TestLog;
 import model.TopTrumpsModel;
 import model.DTO;
 import view.RoundView;
@@ -15,6 +16,12 @@ import view.TopTrumpsCAView;
 public class TopTrumpsCAController {
 	DTO dto = new DTO(0, 0, 0, 0, 0, 0, 0, 0);
 	int decidingPlayerIndex;
+	private TestLog TestLog = new TestLog();
+	private boolean writeGameLogsToFile;
+	
+	public TopTrumpsCAController(boolean writeGameLogsToFile) {
+		this.writeGameLogsToFile = writeGameLogsToFile;
+	}
 
 	//method to create both computer and human players
 	public void createplayers(TopTrumpsModel TopTrumps) {
@@ -26,7 +33,6 @@ public class TopTrumpsCAController {
 		TopTrumps.setPlayers(TopTrumps.getNewPlayers());
 	}
 	
-	
 	public Player getRandomPlayer(TopTrumpsModel TopTrumps) {
 		decidingPlayerIndex = TopTrumps.getRand().nextInt(TopTrumps.getPlayers().length);
 		return TopTrumps.getPlayers()[decidingPlayerIndex];
@@ -37,10 +43,10 @@ public class TopTrumpsCAController {
 	}
 	
 	//method to check if a string is a number
-	public static boolean isNumeric(String cadena) {
+	public static boolean isNumeric(String s) {
 		boolean result;
 		try {
-			Integer.parseInt(cadena);
+			Integer.parseInt(s);
 			result = true;
 		} catch (NumberFormatException excepcion) {
 			result = false;
@@ -161,7 +167,13 @@ public class TopTrumpsCAController {
 
 		TopTrumpsModel.setRound(CurrRound);
 		roundC.saveValues(TopTrumpsModel.getRound().getPlayers(), TopTrumpsModel.getRound().getIndex(), TopTrumpsModel.getRound().getPrevValues());
+		//log each players hand after round 
+		TestLog.logUsersHand(TopTrumpsModel,  writeGameLogsToFile);
 		roundV.startHovering(TopTrumpsModel.getRound());
+		TestLog.logcurrentCardsInPlay(TopTrumpsModel, writeGameLogsToFile);
+		TestLog.logCategorySelected(TopTrumpsModel, writeGameLogsToFile);
+		TestLog.logCommonPile(TopTrumpsModel, writeGameLogsToFile);
+	
 		TopTrumpsModel.setCurrentPile(TopTrumpsModel.getRound().getPile());
 		if (!TopTrumpsModel.getRound().isDraw()) {
 			TopTrumpsModel.setDecidingPlayer(TopTrumpsModel.getRound().getWinner());
@@ -172,6 +184,9 @@ public class TopTrumpsCAController {
 		System.out.println("Cards in pile: " + TopTrumpsModel.getRound().getPile().getCards().length);
 
 		TopTrumpsModel.setPrevRoundString(roundV.getRoundString(TopTrumpsModel.getRound()));
+		
+		TestLog.logWinner(TopTrumpsModel, writeGameLogsToFile);
+		
 		String displayText = TopTrumpsModel.getPrevRoundString();
 		System.out.println(displayText);
 		if (TopTrumpsModel.getRound().isDraw()) {
@@ -224,6 +239,9 @@ public class TopTrumpsCAController {
 		this.checkIfGameOver(TopTrumpsModel);
 	
 		
+	}
+	public TestLog getTestLog() {
+		return TestLog;
 	}
 
 }

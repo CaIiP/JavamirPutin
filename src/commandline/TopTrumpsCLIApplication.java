@@ -28,9 +28,9 @@ public class TopTrumpsCLIApplication {
 	// main
 	public static void main(String[] args) {
 		boolean writeGameLogsToFile = false; // Should we write game logs to file?
-//		if (args[0].equalsIgnoreCase("true")) {
+		if (args[0].equalsIgnoreCase("true")) {
 			writeGameLogsToFile = true; // Command line selection
-//		}
+		}
 		TopTrumpsModel TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",false,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
 		TopTrumpsCLIApplication TopTrumps = new TopTrumpsCLIApplication();
 
@@ -54,8 +54,9 @@ public class TopTrumpsCLIApplication {
 			if (TopTrumpsCAController.isNumeric(startInput)) {
 				if(startInput.equals("1")) {
 					TopTrumpsModel.setUserWantsToQuit(true);
-					Controller C = new Controller(5); //start game with 5 players 
+					Controller C = new Controller(5, writeGameLogsToFile); //start game with 5 players 
 					C.playingGame();
+					
 					index++;
 					TopTrumpsModel.setUserWantsToQuit(false);
 				}
@@ -66,7 +67,9 @@ public class TopTrumpsCLIApplication {
 				}
 			}
 		}
+
 	}
 }
+
 
 

@@ -328,33 +328,42 @@
 			
 			
  			
- 		function getPlayerName() {
-			
-				// First create a CORS request, this is the message we are going to send (a get request in this case)
-				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/playerName"); // Request type and URL
+ 		function  currPlayerCards() {
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/currentcards"); // Request type and URL
 				
-				// Message is not sent yet, but we can check that the browser supports CORS
+				
 				if (!xhr) {
   					alert("CORS not supported");
 				}
 
-				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
-				// to do when the response arrives 
+				
 				xhr.onload = function(e) {
- 					var responseText = xhr.response; // the text of the response
- 					//alert(responseText);
-				document.getElementById("currentPlayer").innerHTML = responseText;
+ 					var responseText = hr.response; // the text of the response
+ 					alert(responseText); // lets produce an alert
+
+				  document.getElementById('cardName1').innerHTML="The active card is" + JSON.parse(responseText);
 				};
 				
 				// We have done everything we need to prepare the CORS request, so send it
 				xhr.send();		
 			}
  			
- 			
- 			
- 			function buttonTest() {
-			document.getElementById("currentPlayer").innerHTML = " yass the test worked";
- 			} 
+ 		
+ 			function  currentPlayer() {
+				var xhr = createCORSRequest('GET', "http://localhost:7777/toptrumps/currentPlayer"); // Request type and URL
+				if (!xhr) {
+  					alert("CORS not supported");
+				}
+				xhr.onload = function(e) {
+ 					var responseText = hr.response; // the text of the response
+ 				alert(responseText); // lets produce an alert
+
+				  document.getElementById('currentPlayer').innerHTML="The active player is" + JSON.parse(responseText);
+				};
+				
+				xhr.send();		
+			}
+		
  			
 		</script>
 		

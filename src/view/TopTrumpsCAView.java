@@ -2,12 +2,15 @@ package view;
 
 import model.Card;
 import model.Player;
+import model.TestLog;
 import model.TopTrumpsModel;
 
 public class TopTrumpsCAView {
+	//private TestLog TestLog = new TestLog();
 	public void WhoseTurn(TopTrumpsModel TopTrumps) {
 		String WhoseTurn = String.format("Current player turn: %s%n%n", TopTrumps.getDecidingPlayer().getName());
 		System.out.println(WhoseTurn);
+		
 	}
 	//
 	public void showCurrentCard(TopTrumpsModel TopTrumps) {
@@ -87,5 +90,9 @@ public class TopTrumpsCAView {
 			System.out.println();
 		}
 	}
+
+		
+	}
 	
-}
+	
+

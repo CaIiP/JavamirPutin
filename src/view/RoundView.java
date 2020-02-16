@@ -6,8 +6,14 @@ import model.Card;
 import model.CommunalPile;
 import model.Player;
 import model.Round;
+import model.TestLog;
+import model.TopTrumpsModel;
 
 public class RoundView {
+	private Round round;
+
+	
+	
 	
 	public String getRoundString(Round round) {
 
@@ -81,7 +87,10 @@ public class RoundView {
 				cardsArray[i] = c;
 			}
 		}
+		
 		round.setCards(cardsArray);
+		
+		//current cards in play view 
 		System.out.println("---------------------------");
 		System.out.println("******** Cards in play: ********");
 		String attribute1Name = round.getDeck().getSize();
@@ -107,6 +116,7 @@ public class RoundView {
 				System.out.println(attValString);
 			}
 		}
+		//catagory selected view 
 		System.out.println("---------------------------");
 		String Attribute = "";
 		if (round.getIndex() == 1) {
@@ -126,6 +136,7 @@ public class RoundView {
 			Player p = round.getPlayers()[i];
 			if (p.getHand().length > 0) {
 				System.out.println(p.getName() + ": " + round.getPrevValues()[i]);
+				
 			}
 		}
 		System.out.println();
@@ -273,6 +284,10 @@ public class RoundView {
 			}
 			System.out.println("---------------------------");
 		}
+	}
+	public Round getRound() {
+		return this.round;
+		
 	}
 
 }
