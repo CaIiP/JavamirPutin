@@ -19,7 +19,7 @@ public class Controller {
 	private static String[] CompPlayerNames = { "BotOne", "BotTwo", "BotThree", "BotFour" };
 	private TopTrumpsModel topTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",false,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
 	private TopTrumpsCAController topTrumpsCAController;
-	
+	private RoundController roundC = new RoundController();
 	private TopTrumpsCAView TopTrumpsCAView = new TopTrumpsCAView();
 	private PlayerController playerC = new PlayerController();
 	private boolean writeGameLogsToFile;
