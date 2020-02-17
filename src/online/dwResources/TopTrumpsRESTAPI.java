@@ -1,5 +1,3 @@
-
-
 package online.dwResources;
 
 import java.io.IOException;
@@ -16,7 +14,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import online.configuration.TopTrumpsJSONConfiguration;
-import view.RoundView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -107,7 +104,7 @@ public class TopTrumpsRESTAPI {
 	@Path("/newGame/{playerCount}")
 	//first screen api
 	public boolean newGameButton(@PathParam("playerCount") int playerCount)	{
-		controller = new OnlineController(playerCount, true);
+		controller = new OnlineController(playerCount, false);
 		return true;
 	}
 
@@ -131,24 +128,19 @@ public class TopTrumpsRESTAPI {
 	@GET
 	@Path("/currentcards")
 	public String currPlayerCards()	{
-		RoundView rv = new RoundView();
-		String r = rv.getRound().getDeck().getSize();
-		return r;
+		
+		return "";
 	}
 	
 	@GET
 	@Path("/chooseAttribute/{attributeName}")
 	public String chooseAttributes(@PathParam("attributeName") String attributeName)	{
-		
-		
 		return "";
 	}
-	
 	
 	@GET
 	@Path("/nextStage")
 	public String nextRoundStage()	{
 		return "";
 	}	
-
 }

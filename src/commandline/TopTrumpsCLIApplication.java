@@ -24,6 +24,7 @@ import controller.TopTrumpsCAController;
 public class TopTrumpsCLIApplication {
 	private static ArrayList<Card> Deck;
 	private static String[] CompPlayerNames = { "BotOne", "BotTwo", "BotThree", "BotFour" };
+
 	
 	// main
 	public static void main(String[] args) {
@@ -40,11 +41,8 @@ public class TopTrumpsCLIApplication {
 		while (!TopTrumpsModel.isUserWantsToQuit()) {
 			if(index != 0) {
 				TopTrumps = new TopTrumpsCLIApplication();// The class
-				//	TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",true,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
 			}
-/*
- starts the game or shows statistics 
- */
+			//starts the game or shows statistics 
 			System.out.println(
 					"Please press 1 to play a new game or 2 if you want to see the statistics");
 			String startInput;
@@ -55,7 +53,6 @@ public class TopTrumpsCLIApplication {
 					TopTrumpsModel.setUserWantsToQuit(true);
 					Controller C = new Controller(5, writeGameLogsToFile); //start game with 5 players 
 					C.playingGame();
-					
 					index++;
 					TopTrumpsModel.setUserWantsToQuit(false);
 				}

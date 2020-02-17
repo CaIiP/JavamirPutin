@@ -32,7 +32,6 @@
         	body {
               background-color: lightblue;
             }
-
             .footer {
             position: absolute;
             right: 0;
@@ -45,7 +44,6 @@
             font-family: Arial;
             font-size: 14px;
         }
-
     </style>	
     	<div class="container">
 <div class="container">
@@ -76,7 +74,6 @@
 		
 <body>
         <style>
-
             .footer {
             position: absolute;
             right: 0;
@@ -89,9 +86,7 @@
             font-family: Arial;
             font-size: 14px;
         }
-
     </style>
-
 <div class="footer"><center>
             Presented by Javamir Putin </br>Shannen Harper 2095119H - Calum Paterson 2040455P - Fara Stringfellow 2131715S - Rija Fatima 2229772F </center>
         </div>
@@ -138,23 +133,17 @@
 			function createCORSRequest(method, url) {
   				var xhr = new XMLHttpRequest();
   				if ("withCredentials" in xhr) {
-
     				// Check if the XMLHttpRequest object has a "withCredentials" property.
     				// "withCredentials" only exists on XMLHTTPRequest2 objects.
     				xhr.open(method, url, true);
-
   				} else if (typeof XDomainRequest != "undefined") {
-
     				// Otherwise, check if XDomainRequest.
     				// XDomainRequest only exists in IE, and is IE's way of making CORS requests.
     				xhr = new XDomainRequest();
     				xhr.open(method, url);
-
  				 } else {
-
     				// Otherwise, CORS is not supported by the browser.
     				xhr = null;
-
   				 }
   				 return xhr;
 			}
@@ -174,7 +163,6 @@
 				if (!xhr) {
   					alert("CORS not supported");
 				}
-
 				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
 				// to do when the response arrives 
 				xhr.onload = function(e) {
@@ -196,7 +184,6 @@
 				if (!xhr) {
   					alert("CORS not supported");
 				}
-
 				// CORS requests are Asynchronous, i.e. we do not wait for a response, instead we define an action
 				// to do when the response arrives 
 				xhr.onload = function(e) {
@@ -218,8 +205,6 @@
   			  $("p").show();
  			 });
 				});
-
-
 		</script>
 		
 		</body>

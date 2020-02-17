@@ -20,12 +20,10 @@ public class TestLog {
 		}
 
 	}
-
-
 	//methods 
 
 	public void logDeck(TopTrumpsModel TopTrumps, boolean writeGameLogsToFile) {
-		if (writeGameLogsToFile == false ) {
+		if (writeGameLogsToFile == false) {
 
 
 			StringBuffer  sbDeck = new StringBuffer("Deck of Cards (Unshuffled):" +System.getProperty("line.separator") );			
@@ -58,10 +56,8 @@ public class TestLog {
 		}
 	}
 
-
-
 	public void logShuffledDeck(TopTrumpsModel TopTrumps,  boolean writeGameLogsToFile) {
-		if (writeGameLogsToFile== false ) {
+		if (writeGameLogsToFile == false) {
 			StringBuffer  sbDeck = new StringBuffer("Shuffled Deck:" +System.getProperty("line.separator") );
 			String attribute1 = TopTrumps.getDeck().getSize();
 			String attribute2 = TopTrumps.getDeck().getSpeed();
@@ -90,10 +86,8 @@ public class TestLog {
 		}
 	}
 
-
-
 	public void logUsersHand(TopTrumpsModel TopTrumps, boolean writeGameLogsToFile) {
-		if (writeGameLogsToFile== false ) {
+		if (writeGameLogsToFile == false) {
 			StringBuffer  sbHand = new StringBuffer("Players Current Hands:" +System.getProperty("line.separator") );
 			sbHand.append(System.getProperty("line.separator"));
 			sbHand.append("Player hands post-round: "+ System.getProperty("line.separator"));
@@ -120,11 +114,11 @@ public class TestLog {
 			}
 			sbHand.append(Separator);
 			log.info(sbHand.toString());
-		}}
-
+		}
+	}
 
 	public void logCommonPile(TopTrumpsModel TopTrumps,  boolean writeGameLogsToFile) {
-		if (writeGameLogsToFile== false ) {
+		if (writeGameLogsToFile == false) {
 			StringBuffer  sbComPile = new StringBuffer("Common Pile :" +System.getProperty("line.separator") );
 			if (TopTrumps.getRound().getPile().getCards().length > 0) {
 				String attribute1CPileName = TopTrumps.getRound().getDeck().getSize();
@@ -153,15 +147,11 @@ public class TestLog {
 			}
 			sbComPile.append(Separator);
 			log.info(sbComPile.toString());
-		}}
-
-
-
-
-
+		}
+	}
 
 	public void logcurrentCardsInPlay(TopTrumpsModel TopTrumps,  boolean writeGameLogsToFile) {
-		if (writeGameLogsToFile== false ) {
+		if (writeGameLogsToFile == false) {
 			StringBuffer  sbDeck = new StringBuffer("Current Cards in play:" +System.getProperty("line.separator") );
 			String attribute1Name = TopTrumps.getRound().getDeck().getSize();
 			String attribute2Name = TopTrumps.getRound().getDeck().getSpeed();
@@ -190,12 +180,11 @@ public class TestLog {
 			sbDeck.append(Separator);
 			log.info(sbDeck.toString());
 
-		}}
-
-
+		}
+	}
 
 	public void logCategorySelected(TopTrumpsModel TopTrumps,  boolean writeGameLogsToFile) {
-		if (writeGameLogsToFile== false ) {
+		if (writeGameLogsToFile == false) {
 			StringBuffer  sbCat = new StringBuffer("Category Selection: " +System.getProperty("line.separator") );
 			String Attribute = "";
 			if (TopTrumps.getRound().getIndex() == 1) {
@@ -222,12 +211,8 @@ public class TestLog {
 		}
 	}
 
-
-
-
-
 	public void logWinner(TopTrumpsModel TopTrumps,  boolean writeGameLogsToFile)
-	{ if (writeGameLogsToFile== false ) {
+	{ if (writeGameLogsToFile == false) {
 		StringBuffer  sbWin = new StringBuffer("Player Winnner/Loser Notification: " +System.getProperty("line.separator") );
 		String roundString = String.format("");
 		String Attribute = "";
@@ -245,15 +230,20 @@ public class TestLog {
 
 		String WinLost = String.format("%n");
 		Player user = TopTrumps.getRound().getPlayers()[0];
-		if (user.getHand().length == TopTrumps.getRound().getDeck().getDeck().size() - TopTrumps.getRound().getPile().getCards().length) {
-			if (TopTrumps.getRound().getWinner() != null) {
-				WinLost += String.format("YOU WON THE GAME!: " + TopTrumps.getRound().getWinner().getName());
-			} else {
-				WinLost += String.format("YOU WON THE GAME!:" + user.getName());
+
+		
+		
+		int pass = 0;
+		for (int i = 0; i < TopTrumps.getNumPlayers(); i++) {
+			Player user1 = TopTrumps.getRound().getPlayers()[i];
+			int length = user1.getHand().length;
+			if (length == 40) {
+				sbWin.append("Game over, the winner is " + user1.getName());
+		
 			}
-		} else if (user.getHand().length == 0) {
-			WinLost += String.format("YOU LOST THE GAME!:" + user.getName());
-		}
+			
+		}	
+		
 		roundString += WinLost+  System.getProperty("line.separator");
 
 		String WinnerDraw = String.format("%n");
@@ -265,9 +255,12 @@ public class TestLog {
 		roundString += WinnerDraw;
 		sbWin.append(roundString);
 		log.info(sbWin.toString());
+			}
+		}
+	
+	public void closeFileReader()	{
+		f.close();
 	}
-	}
-
 }
 
 

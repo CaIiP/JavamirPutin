@@ -98,7 +98,7 @@ public class TopTrumpsCAController {
 			Player user = TopTrumpsModel.getRound().getPlayers()[i];
 			int length = user.getHand().length;
 			if (length == 40) {
-				System.out.println("Game over, Win " + user.getName());
+				System.out.println("Game over, the winner is " + user.getName());
 				if (user.getName() == "Human")	{
 					dto.setHumanWins(dto.getHumanWins() + 1);
 				}
@@ -116,6 +116,8 @@ public class TopTrumpsCAController {
 				}
 				System.out.println("If you want to play again please press 1. If you want to show the statistics of the game please press 2.");
 				dto.setGameCounter(dto.getGameCounter()+1);		//increase gameCounter by 1 with each win
+				
+				
 				String newGameInput;
 				Scanner newGameScanner = new Scanner(System.in);
 				newGameInput = newGameScanner.nextLine();
@@ -135,6 +137,7 @@ public class TopTrumpsCAController {
 				break;
 			}
 		}
+	
 		if (pass == 0) {
 			if (TopTrumpsModel.getDecidingPlayer().getName().equals(TopTrumpsModel.getUser_name())) {
 				UserPicking(TopTrumpsModel);
@@ -151,9 +154,12 @@ public class TopTrumpsCAController {
 		RoundController roundC = new RoundController();
 		RoundView roundV = new RoundView();
 		
+		int rc = dto.getRoundCounter();
+		System.out.println("Round: " + rc);
 		CurrRound = new Round(TopTrumpsModel.getPlayers(), TopTrumpsModel.getDecidingPlayer(), TopTrumpsModel.getCurrentPile(), trumpIndex, TopTrumpsModel.getDeck(), TopTrumpsModel.getNo_cards());
 		if (trumpIndex == 0) {
 			CurrRound.setIndex(roundC.getIndex(TopTrumpsModel.getDecidingPlayer(), CurrRound.getATTR()));
+			
 		} else {
 			CurrRound.setIndex(trumpIndex);
 		}
@@ -168,20 +174,20 @@ public class TopTrumpsCAController {
 		TestLog.logCommonPile(TopTrumpsModel, writeGameLogsToFile);
 	
 		TopTrumpsModel.setCurrentPile(TopTrumpsModel.getRound().getPile());
+		//sets winner of previous round to starting player in event of a draw
 		if (!TopTrumpsModel.getRound().isDraw()) {
 			TopTrumpsModel.setDecidingPlayer(TopTrumpsModel.getRound().getWinner());
 		}
 		TopTrumpsCAView TopTrumpsCAView = new TopTrumpsCAView();
-		TopTrumpsCAView.WhoseTurn(TopTrumpsModel);
-// amounts of cards in a pile if there is a draw
-		System.out.println("Cards in pile: " + TopTrumpsModel.getRound().getPile().getCards().length);
+		TopTrumpsCAView.whoseTurn(TopTrumpsModel);
+		// amounts of cards in a pile if there is a draw
+		System.out.println("Card in communal pile: " + TopTrumpsModel.getRound().getPile().getCards().length);
 
 		TopTrumpsModel.setPrevRoundString(roundV.getRoundString(TopTrumpsModel.getRound()));
 		
 		TestLog.logWinner(TopTrumpsModel, writeGameLogsToFile);
 		
 		String displayText = TopTrumpsModel.getPrevRoundString();
-		System.out.println(displayText);
 		if (TopTrumpsModel.getRound().isDraw()) {
 			TopTrumpsModel.getGame().setNumDraws(TopTrumpsModel.getGame().getNumDraws() + 1);
 			dto.setDrawCounter(dto.getDrawCounter() + 1);	//Increases draw counter by 1 every time there is a draw
@@ -189,7 +195,8 @@ public class TopTrumpsCAController {
 		TopTrumpsModel.getGame().setNumRounds(TopTrumpsModel.getGame().getNumRounds() + 1);
 		dto.setRoundCounter(dto.getRoundCounter() + 1);		//Increases round counter by 1 every time a round ends
 
-
+	
+		
 		Player user = TopTrumpsModel.getPlayers()[0];
 		String UserCardInfo;
 		if (user.getHand().length == 0) {// if no cards are left in player hand
@@ -207,7 +214,10 @@ public class TopTrumpsCAController {
 			UserCardInfo = CardDescription + CardAttribute1 + CardAttribute2 + CardAttribute3 + CardAttribute4
 					+ CardAttribute5;// print card attributes
 		}
-		System.out.println("Cards left in hand: " + TopTrumpsModel.getPlayers()[0].getHand().length + "\nCurrent card: " + UserCardInfo);
+		
+		
+		
+		System.out.println("Cards left in hand: " + TopTrumpsModel.getPlayers()[0].getHand().length + "\nCurrent card: " +  UserCardInfo);
 		switch (TopTrumpsModel.getPlayers().length) {// cases of how many AI players left in the game with cards in hand
 		case 2:
 			System.out.println("Bot 1 Cards left in hand:\n" + TopTrumpsModel.getPlayers()[1].getHand().length);
@@ -228,6 +238,7 @@ public class TopTrumpsCAController {
 			System.out.println("Bot 4 Cards left in hand:\n" + TopTrumpsModel.getPlayers()[4].getHand().length);
 			break;
 		}
+		System.out.println();
 		this.checkIfGameOver(TopTrumpsModel);
 	
 		

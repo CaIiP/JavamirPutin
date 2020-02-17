@@ -29,42 +29,27 @@ public class RoundView {
 		} else if (round.getIndex() == 5) {
 			Attribute = round.getDeck().getCargo();
 		}
-		roundString += String.format("Previous round attribute: %s%n", Attribute);
+
 		String score = String.format("");
-		for (int i = 0; i < round.getPlayers().length; i++) {
-			Player p = round.getPlayers()[i];
-			if (p.getHand().length > 0) {
-				score += String.format("%s: ", p.getName());
-				score += String.format("%d    ", round.getPrevValues()[i]);
-			}
-		}
-		score += String.format("%n%n");
+		score += String.format("%n");
 		roundString += score;
 
-		System.out.println();
-		String WinLost = String.format("%n%n");
+		//System.out.println();
+		String winLost = String.format("%n");
 		Player user = round.getPlayers()[0];
-		if (user.getHand().length == round.getDeck().getDeck().size() - round.getPile().getCards().length) {
-			if (round.getWinner() != null) {
-				WinLost += String.format("YOU WON THE GAME!: " + round.getWinner().getName());
-			} else {
-				WinLost += String.format("YOU WON THE GAME!:" + user.getName());
-			}
-		} else if (user.getHand().length == 0) {
-			WinLost += String.format("YOU LOST THE GAME!:" + user.getName());
-		}
-		roundString += WinLost;
-		System.out.println();
-		String WinnerDraw = String.format("%n%n");
+		roundString += winLost;
+
+		String winnerDraw = String.format("%n");
 		if (round.isDraw()) {
-			WinnerDraw += String.format("This round was a draw.%n%n");
+			winnerDraw += String.format("This round was a draw.%n");
 		} else {
-			WinnerDraw += String.format("%s won the previous round%n%n", round.getWinner().getName());
+			winnerDraw += String.format("%s won the previous round%n", round.getWinner().getName());
 		}
-		roundString += WinnerDraw;
+		roundString += winnerDraw;
+		System.out.println(roundString);
 		return roundString;
 	}
-	
+
 	//Function that is used to show the cards in play of the round and also to indicate which cards were left after playing the round.
 	public void startHovering(Round round) {
 		System.out.println("---------------------------");
@@ -88,7 +73,7 @@ public class RoundView {
 		}
 	
 		round.setCards(cardsArray);
-		System.out.println("---------------------------");
+
 // currents card to play
 		for (Card Card : round.getCards()) {
 			if (Card != null) {
@@ -130,8 +115,7 @@ public class RoundView {
 			}
 		}
 		
-		
-		System.out.println();
+
 		boolean drawR = false;
 		int maxScore = 50;
 		int[] playerScores = new int[maxScore];
@@ -254,7 +238,6 @@ public class RoundView {
 					attribute1CPileName, attribute2CPileName, attribute3CPileName, attribute4CPileName,
 					attribute5CPileName);
 
-			System.out.println(attributeCPileNameString);
 			for (int i = 0; i < round.getPile().getCards().length; i++) {
 				String nameValue = round.getPile().getCards()[i].getName();
 				String att1Value = Integer.toString(round.getPile().getCards()[i].getSize());

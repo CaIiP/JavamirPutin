@@ -21,14 +21,11 @@ public class DeckController {
 			e.printStackTrace();
 		}
 		boolean firstRun = true;
-		//System.out.println("Unshuffled deck:");
-		//System.out.println();
 		for (String line : lines) {
 			if (firstRun) {
 				firstRun = false;
 				continue;
 			}
-			//System.out.println(line);
 			deck.add(new Card(line));
 		} 
 	}

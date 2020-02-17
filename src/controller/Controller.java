@@ -3,6 +3,7 @@ package controller;
 import model.Card;
 
 import model.CommunalPile;
+import model.DTO;
 import model.Game;
 import model.Player;
 import model.TopTrumpsModel;
@@ -21,10 +22,10 @@ public class Controller {
 	private TopTrumpsCAController topTrumpsCAController;
 	private RoundController roundC = new RoundController();
 	private TopTrumpsCAView TopTrumpsCAView = new TopTrumpsCAView();
+	private DTO dto = new DTO(0,0,0,0,0,0,0,0);
 	private PlayerController playerC = new PlayerController();
 	private boolean writeGameLogsToFile;
 	
-	//testlog 
 
 	
 	//constructor 
@@ -32,6 +33,9 @@ public class Controller {
 
 	
 		topTrumpsModel.setPrevRoundString("");// String variable that is used to show the results of the rounds that are
+
+
+		
 		topTrumpsModel.getDeckC().generateDeck(topTrumpsModel.getLines(), topTrumpsModel.getdeck());//creates deck
 		topTrumpsCAController = new TopTrumpsCAController(writeGameLogsToFile);
 		topTrumpsCAController.getTestLog().logDeck(topTrumpsModel, writeGameLogsToFile);
@@ -51,7 +55,7 @@ public class Controller {
 		//picks first player
 		topTrumpsModel.setDecidingPlayer(topTrumpsCAController.getRandomPlayer(topTrumpsModel)); 
 		//sends first player to view
-		TopTrumpsCAView.WhoseTurn(topTrumpsModel);
+		TopTrumpsCAView.whoseTurn(topTrumpsModel);
 		//creates common pile
 		topTrumpsModel.setCurrentPile(new CommunalPile());
 
@@ -65,6 +69,7 @@ public class Controller {
 	}
 	public void playingGame() {
 		//shows humans current card
+	
 		TopTrumpsCAView.showCurrentCard(topTrumpsModel);
 		//if human go to user picking
 		//if bot go to play round
@@ -72,12 +77,9 @@ public class Controller {
 		if (topTrumpsModel.getDecidingPlayer().getName().equals(topTrumpsModel.getUser_name())) {
 			topTrumpsCAController.UserPicking(topTrumpsModel);
 		} else {
-
 			topTrumpsCAController.playRound(0,topTrumpsModel);
 		}
-
-		TopTrumpsCAView.CardsBelonging(topTrumpsModel);
-		//topTrumpsCAController.getTestLog().logUsersHand(topTrumpsModel);
+		
 	}
 
 	public TopTrumpsCAController getCAController()	{
@@ -89,6 +91,5 @@ public class Controller {
 	}
 	public boolean getWriteGameLogsToFile() {
 		return writeGameLogsToFile;
-		
 	}
 }

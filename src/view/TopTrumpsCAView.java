@@ -6,13 +6,12 @@ import model.TestLog;
 import model.TopTrumpsModel;
 
 public class TopTrumpsCAView {
-	//private TestLog TestLog = new TestLog();
-	public void WhoseTurn(TopTrumpsModel TopTrumps) {
-		String WhoseTurn = String.format("Current player turn: %s%n%n", TopTrumps.getDecidingPlayer().getName());
-		System.out.println(WhoseTurn);
-		
+
+	public void whoseTurn(TopTrumpsModel TopTrumps) {
+		String whoseTurn = String.format("Current player turn: %s%n", TopTrumps.getDecidingPlayer().getName());
+		System.out.println(whoseTurn);
 	}
-	//
+
 	public void showCurrentCard(TopTrumpsModel TopTrumps) {
 		String UserCardInfo;
 		Player user = TopTrumps.getPlayers()[0];
@@ -27,15 +26,16 @@ public class TopTrumpsCAView {
 			String CardAttribute2 = String.format("%s: %s   ", TopTrumps.getDeck().getSpeed(),UserCurrentCard.getSpeed());
 			String CardAttribute3 = String.format("%s: %s   ", TopTrumps.getDeck().getRange(),UserCurrentCard.getRange());
 			String CardAttribute4 = String.format("%s: %s   ", TopTrumps.getDeck().getFirepower(),UserCurrentCard.getFirepower());
-			String CardAttribute5 = String.format("%s: %s   %n%n", TopTrumps.getDeck().getCargo(),UserCurrentCard.getCargo());
+			String CardAttribute5 = String.format("%s: %s   %n", TopTrumps.getDeck().getCargo(),UserCurrentCard.getCargo());
 			UserCardInfo = CardDescription + CardAttribute1 + CardAttribute2 + CardAttribute3 + CardAttribute4 + CardAttribute5;
 		}
 	System.out.println("Current card: " + UserCardInfo);
+	
 
 	}
 	
 	//prints current hands of all players
-	public void CardsBelonging(TopTrumpsModel TopTrumps) {
+	public void cardsBelonging(TopTrumpsModel TopTrumps) {
 		for (Player P : TopTrumps.getPlayers()) {
 			System.out.println("-------------------------------------");
 			System.out.println("Cards belonging to: " + P.getName());
@@ -62,7 +62,6 @@ public class TopTrumpsCAView {
 
 				System.out.println(attValString);
 			}
-			System.out.println();
 		}
 	}
 

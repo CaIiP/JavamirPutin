@@ -31,7 +31,6 @@ public class DTO {
 		return roundCounter;
 	}
 	public void setRoundCounter(int roundCounter) {
-		System.out.println("previous round was "+ roundCounter );
 		this.roundCounter = roundCounter;
 	}
 	public int getHumanWins() {
