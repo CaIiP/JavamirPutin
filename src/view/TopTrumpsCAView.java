@@ -30,33 +30,8 @@ public class TopTrumpsCAView {
 			String CardAttribute5 = String.format("%s: %s   %n%n", TopTrumps.getDeck().getCargo(),UserCurrentCard.getCargo());
 			UserCardInfo = CardDescription + CardAttribute1 + CardAttribute2 + CardAttribute3 + CardAttribute4 + CardAttribute5;
 		}
-		System.out.println("Current card: " + UserCardInfo);
-	// SHUFFLED DECK
-		//PRINTS OUT ATTRIBUTE TITLES
-		System.out.println();
-		String attribute1 = TopTrumps.getDeck().getSize();
-		String attribute2 = TopTrumps.getDeck().getSpeed();
-		String attribute3 = TopTrumps.getDeck().getRange();
-		String attribute4 = TopTrumps.getDeck().getFirepower();
-		String attribute5 = TopTrumps.getDeck().getCargo();
-		String attributeNameString = String.format("%20.20s %15.15s %15.15s "+  "%15.15s %15.15s %15.15s", "",
-				attribute1, attribute2, attribute3, attribute4, attribute5);
-		System.out.println(attributeNameString);
-		//PRINTS OUT SHOUFFLED DECK of cards (name and values)
-		for (int i = 0; i < TopTrumps.getNo_cards(); i++) {
-			Card CurrentCard = TopTrumps.getdeck().get(i);
-			String nameValue = CurrentCard.getName();
-			String attribute1Val = Integer.toString(CurrentCard.getSize());
-			String attribute2Val = Integer.toString(CurrentCard.getSpeed());
-			String attribute3Val = Integer.toString(CurrentCard.getRange());
-			String attribute4Val = Integer.toString(CurrentCard.getFirepower());
-			String attribute5Val = Integer.toString(CurrentCard.getCargo());
+	System.out.println("Current card: " + UserCardInfo);
 
-			String attValString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", nameValue,
-					attribute1Val, attribute2Val, attribute3Val, attribute4Val, attribute5Val);
-			System.out.println(attValString);
-		}
-		System.out.println();
 	}
 	
 	//prints current hands of all players

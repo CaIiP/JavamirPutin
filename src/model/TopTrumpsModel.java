@@ -7,12 +7,8 @@ import controller.DeckController;
 import controller.RoundController;
 
 public class TopTrumpsModel {
-	// = new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo");
-	// = new ArrayList<Card>();
-	// = new ArrayList<String>();
-	//  = { "BotOne", "BotTwo", "BotThree", "BotFour" };
-	// = new DeckController();
-	// = new Random();
+	//	//Instance variables
+    //attributes
 	private int no_cards;
 	private String user_name = "Human";
 	private ArrayList<Card> Deck;
@@ -34,7 +30,7 @@ public class TopTrumpsModel {
 	private GameStats gameStats;
 	
 	
-
+//constructor
 	public TopTrumpsModel(int no_cards, String user_name,Deck deck, ArrayList<Card> Deck, int numPlayers, String prevRoundString,
 			boolean userWantsToQuit, ArrayList<String> lines, DeckController deckC, String[] compPlayerNames,
 			Random rand) {
@@ -67,9 +63,7 @@ public class TopTrumpsModel {
 		database.dbDisconnect();
 	}
 
-	/**
-	 * @return the user_name
-	 */
+	// getters and setters
 	public String getUser_name() {
 		return user_name;
 	}

@@ -1,5 +1,5 @@
 package view;
-
+// initial variables
 import controller.CommunalPileController;
 import controller.PlayerController;
 import model.Card;
@@ -9,12 +9,11 @@ import model.Round;
 import model.TestLog;
 import model.TopTrumpsModel;
 
+/*
+ * This shows the view of rounds played in the logic, the previous round attributes
+ */
 public class RoundView {
 	private Round round;
-
-	
-	
-	
 	public String getRoundString(Round round) {
 
 		String roundString = String.format("");
@@ -87,37 +86,28 @@ public class RoundView {
 				cardsArray[i] = c;
 			}
 		}
-		
+	
 		round.setCards(cardsArray);
-		
-		//current cards in play view 
 		System.out.println("---------------------------");
-		System.out.println("******** Cards in play: ********");
-		String attribute1Name = round.getDeck().getSize();
-		String attribute2Name = round.getDeck().getSpeed();
-		String attribute3Name = round.getDeck().getRange();
-		String attribute4Name = round.getDeck().getFirepower();
-		String attribute5Name = round.getDeck().getCargo();
-		String attributeNameString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", "",
-				attribute1Name, attribute2Name, attribute3Name, attribute4Name, attribute5Name);
-		System.out.println(attributeNameString);
+// currents card to play
 		for (Card Card : round.getCards()) {
 			if (Card != null) {
 				String nameValue = Card.getName();
-				String att1Value = Integer.toString(Card.getSize());
-				String att2Value = Integer.toString(Card.getSpeed());
+			String att1Value = Integer.toString(Card.getSize());
+			String att2Value = Integer.toString(Card.getSpeed());
 				String att3Value = Integer.toString(Card.getRange());
-				String att4Value = Integer.toString(Card.getFirepower());
-				String att5Value = Integer.toString(Card.getCargo());
+			String att4Value = Integer.toString(Card.getFirepower());
+		String att5Value = Integer.toString(Card.getCargo());
 
-				String attValString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", nameValue,
-						att1Value, att2Value, att3Value, att4Value, att5Value);
+			String attValString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", nameValue,
+					att1Value, att2Value, att3Value, att4Value, att5Value);
 
-				System.out.println(attValString);
 			}
-		}
-		//catagory selected view 
-		System.out.println("---------------------------");
+	}
+		/*
+		 * Category selected by the player and value of every players card for tha category
+		 */
+
 		String Attribute = "";
 		if (round.getIndex() == 1) {
 			Attribute = round.getDeck().getSize();
@@ -139,11 +129,12 @@ public class RoundView {
 				
 			}
 		}
+		
+		
 		System.out.println();
 		boolean drawR = false;
 		int maxScore = 50;
 		int[] playerScores = new int[maxScore];
-		// System.out.println(Arrays.toString(playerScores));
 		for (int i = 0; i < round.getPlayers().length; i++) {
 			if (round.getCards()[i] != null) {
 				Card c = round.getCards()[i];
@@ -176,6 +167,7 @@ public class RoundView {
 				break;
 			}
 		}
+		
 		round.setDraw(drawR);
 		int topS = 0;
 		for (int i = 0; i < round.getPlayers().length; i++) {
@@ -205,7 +197,7 @@ public class RoundView {
 				}
 			}
 		}
-		if (round.getWinner() == null) {
+		if (round.getWinner() == null) {//W inner view
 			CommunalPileController communalPileC = new CommunalPileController();
 			for (Card c : round.getCards()) {
 				if (c != null) {
@@ -226,12 +218,10 @@ public class RoundView {
 			}
 			round.setPile(new CommunalPile());
 		}
-		System.out.println("---------------------------");
-		System.out.println("Player hands post-round: \n");
+
 		for (Player p : round.getPlayers()) {
 			if (p.getHand().length > 0) {
-				System.out.println("---------------------------");
-				System.out.println("Cards in hand belonging to: " + p.getName());
+
 				String attribute1PHandName = round.getDeck().getSize();
 				String attribute2PHandName = round.getDeck().getSpeed();
 				String attribute3PHandName = round.getDeck().getRange();
@@ -240,8 +230,6 @@ public class RoundView {
 				String attributePHandNameString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s",
 						"", attribute1PHandName, attribute2PHandName, attribute3PHandName, attribute4PHandName,
 						attribute5PHandName);
-
-				System.out.println(attributePHandNameString);
 				for (Card hand : p.getHand()) {
 					String nameValue = hand.getName();
 					String att1Value = Integer.toString(hand.getSize());
@@ -251,14 +239,12 @@ public class RoundView {
 					String att5Value = Integer.toString(hand.getCargo());
 					String attValString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s",
 							nameValue, att1Value, att2Value, att3Value, att4Value, att5Value);
-					System.out.println(attValString);
 				}
 				System.out.println();
 			}
 		}
 		if (round.getPile().getCards().length > 0) {
-			System.out.println("---------------------------");
-			System.out.println("Common Pile:");
+
 			String attribute1CPileName = round.getDeck().getSize();
 			String attribute2CPileName = round.getDeck().getSpeed();
 			String attribute3CPileName = round.getDeck().getRange();
@@ -279,8 +265,6 @@ public class RoundView {
 
 				String attValString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", nameValue,
 						att1Value, att2Value, att3Value, att4Value, att5Value);
-
-				System.out.println(attValString);
 			}
 			System.out.println("---------------------------");
 		}

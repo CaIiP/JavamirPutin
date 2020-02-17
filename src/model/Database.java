@@ -10,15 +10,6 @@ public class Database {
 	private String password = "2040455p";
 	private String dbURL = "jdbc:postgresql://yacata.dcs.gla.ac.uk:5432";
 	
-	//variables for writing stats to database
-//	private int totalGames = 0;
-//	private int totalDraws = 0;
-//	private int totalRounds = 0;
-//	private int totalHumanWins = 0;
-//	private int totalBot1Wins = 0;
-//	private int totalBot2Wins = 0;
-//	private int totalBot3Wins = 0;
-//	private int totalBot4Wins = 0;
 	
 	//variables for getting stats from database
 	private int	gDrawAvg = 0;

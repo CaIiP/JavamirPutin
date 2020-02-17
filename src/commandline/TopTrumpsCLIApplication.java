@@ -42,12 +42,11 @@ public class TopTrumpsCLIApplication {
 				TopTrumps = new TopTrumpsCLIApplication();// The class
 				//	TopTrumpsModel = new TopTrumpsModel(40,"Human",new Deck(Deck, "Size", "Speed", "Range", "FirePower", "Cargo"),new ArrayList<Card>(),5,"",true,new ArrayList<String>(),new DeckController(),CompPlayerNames,new Random());
 			}
-
-			// ----------------------------------------------------
-			// Add your game logic here based on the requirements
-			// ----------------------------------------------------
+/*
+ starts the game or shows statistics 
+ */
 			System.out.println(
-					"Please choose 1 if you want to play or 2 if you want to see the statistics");
+					"Please press 1 to play a new game or 2 if you want to see the statistics");
 			String startInput;
 			Scanner startScanner = new Scanner(System.in);
 			startInput = startScanner.nextLine();			

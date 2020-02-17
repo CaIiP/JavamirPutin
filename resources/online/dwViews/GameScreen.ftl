@@ -55,7 +55,7 @@
             <body>
     	         <style>
 
-                       .categoryButtons {
+                       .categoryButtons { <!--
                         position: absolute;
                         center: 300;
                         font: bold;
@@ -63,7 +63,7 @@
                         color: white;
                    
 
-                    £nextButton {
+                    #nextButton {
                         position: absolute;
                         right: 0;
                         bottom: 300;

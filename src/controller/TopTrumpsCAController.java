@@ -116,9 +116,6 @@ public class TopTrumpsCAController {
 				}
 				System.out.println("If you want to play again please press 1. If you want to show the statistics of the game please press 2.");
 				dto.setGameCounter(dto.getGameCounter()+1);		//increase gameCounter by 1 with each win
-
-				
-				//turn into endGameOptions
 				String newGameInput;
 				Scanner newGameScanner = new Scanner(System.in);
 				newGameInput = newGameScanner.nextLine();
@@ -138,14 +135,11 @@ public class TopTrumpsCAController {
 				break;
 			}
 		}
-		
-		//turn into nextStage method
 		if (pass == 0) {
 			if (TopTrumpsModel.getDecidingPlayer().getName().equals(TopTrumpsModel.getUser_name())) {
 				UserPicking(TopTrumpsModel);
 			} else {
-				System.out.print("Press ENTER to continue to next round");
-				new Scanner(System.in).nextLine();
+		
 			playRound(0,TopTrumpsModel);
 			}
 		}
@@ -157,7 +151,6 @@ public class TopTrumpsCAController {
 		RoundController roundC = new RoundController();
 		RoundView roundV = new RoundView();
 		
-		//
 		CurrRound = new Round(TopTrumpsModel.getPlayers(), TopTrumpsModel.getDecidingPlayer(), TopTrumpsModel.getCurrentPile(), trumpIndex, TopTrumpsModel.getDeck(), TopTrumpsModel.getNo_cards());
 		if (trumpIndex == 0) {
 			CurrRound.setIndex(roundC.getIndex(TopTrumpsModel.getDecidingPlayer(), CurrRound.getATTR()));
@@ -180,7 +173,7 @@ public class TopTrumpsCAController {
 		}
 		TopTrumpsCAView TopTrumpsCAView = new TopTrumpsCAView();
 		TopTrumpsCAView.WhoseTurn(TopTrumpsModel);
-
+// amounts of cards in a pile if there is a draw
 		System.out.println("Cards in pile: " + TopTrumpsModel.getRound().getPile().getCards().length);
 
 		TopTrumpsModel.setPrevRoundString(roundV.getRoundString(TopTrumpsModel.getRound()));
@@ -199,10 +192,10 @@ public class TopTrumpsCAController {
 
 		Player user = TopTrumpsModel.getPlayers()[0];
 		String UserCardInfo;
-		if (user.getHand().length == 0) {
+		if (user.getHand().length == 0) {// if no cards are left in player hand
 			String s = String.format(TopTrumpsModel.getUser_name() + " have no cards left.\n\n");
 			UserCardInfo = s;
-		} else {
+		} else {// current cards in player hand if its not zero
 			Card UserCurrentCard = user.getHand()[0];
 			String CardDescription = String.format("%s%n", UserCurrentCard.getName());
 			String CardAttribute1 = String.format("%s: %s   ", TopTrumpsModel.getDeck().getSize(), UserCurrentCard.getSize());
@@ -212,11 +205,10 @@ public class TopTrumpsCAController {
 					UserCurrentCard.getFirepower());
 			String CardAttribute5 = String.format("%s: %s   %n%n", TopTrumpsModel.getDeck().getCargo(), UserCurrentCard.getCargo());
 			UserCardInfo = CardDescription + CardAttribute1 + CardAttribute2 + CardAttribute3 + CardAttribute4
-					+ CardAttribute5;
+					+ CardAttribute5;// print card attributes
 		}
-		System.out
-		.println("Cards left in hand: " + TopTrumpsModel.getPlayers()[0].getHand().length + "\nCurrent card: " + UserCardInfo);
-		switch (TopTrumpsModel.getPlayers().length) {
+		System.out.println("Cards left in hand: " + TopTrumpsModel.getPlayers()[0].getHand().length + "\nCurrent card: " + UserCardInfo);
+		switch (TopTrumpsModel.getPlayers().length) {// cases of how many AI players left in the game with cards in hand
 		case 2:
 			System.out.println("Bot 1 Cards left in hand:\n" + TopTrumpsModel.getPlayers()[1].getHand().length);
 			break;

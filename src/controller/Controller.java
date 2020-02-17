@@ -32,11 +32,11 @@ public class Controller {
 
 	
 		topTrumpsModel.setPrevRoundString("");// String variable that is used to show the results of the rounds that are
-		topTrumpsModel.getDeckC().generateDeck(topTrumpsModel.getLines(), topTrumpsModel.getdeck());
+		topTrumpsModel.getDeckC().generateDeck(topTrumpsModel.getLines(), topTrumpsModel.getdeck());//creates deck
 		topTrumpsCAController = new TopTrumpsCAController(writeGameLogsToFile);
 		topTrumpsCAController.getTestLog().logDeck(topTrumpsModel, writeGameLogsToFile);
 		
-		topTrumpsModel.getDeckC().shuffleDeck(topTrumpsModel.getdeck());
+		topTrumpsModel.getDeckC().shuffleDeck(topTrumpsModel.getdeck());// shuffles deck
 		topTrumpsCAController.getTestLog().logShuffledDeck(topTrumpsModel, writeGameLogsToFile);// given
 		
 		topTrumpsModel.setGame(new Game(0, 0)); // An object of the Game class is created

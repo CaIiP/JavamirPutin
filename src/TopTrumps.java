@@ -39,7 +39,7 @@ public class TopTrumps {
 		} else if (commandLineMode) {
 			// Start the command line application
 			String[] commandArgs = { String.valueOf(printTestLog) };
-			TopTrumpsCLIApplication.main(args);
+			TopTrumpsCLIApplication.main(commandArgs);
 		}
 
 	}
