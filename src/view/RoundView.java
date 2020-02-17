@@ -1,4 +1,5 @@
 package view;
+
 // initial variables
 import controller.CommunalPileController;
 import controller.PlayerController;
@@ -14,6 +15,7 @@ import model.TopTrumpsModel;
  */
 public class RoundView {
 	private Round round;
+
 	public String getRoundString(Round round) {
 
 		String roundString = String.format("");
@@ -34,7 +36,7 @@ public class RoundView {
 		score += String.format("%n");
 		roundString += score;
 
-		//System.out.println();
+		System.out.println();
 		String winLost = String.format("%n");
 		Player user = round.getPlayers()[0];
 		roundString += winLost;
@@ -50,7 +52,8 @@ public class RoundView {
 		return roundString;
 	}
 
-	//Function that is used to show the cards in play of the round and also to indicate which cards were left after playing the round.
+	// Function that is used to show the cards in play of the round and also to
+	// indicate which cards were left after playing the round.
 	public void startHovering(Round round) {
 		System.out.println("---------------------------");
 		Card[] cardsArray = { null, null, null, null, null };
@@ -71,26 +74,27 @@ public class RoundView {
 				cardsArray[i] = c;
 			}
 		}
-	
+
 		round.setCards(cardsArray);
 
 // currents card to play
 		for (Card Card : round.getCards()) {
 			if (Card != null) {
 				String nameValue = Card.getName();
-			String att1Value = Integer.toString(Card.getSize());
-			String att2Value = Integer.toString(Card.getSpeed());
+				String att1Value = Integer.toString(Card.getSize());
+				String att2Value = Integer.toString(Card.getSpeed());
 				String att3Value = Integer.toString(Card.getRange());
-			String att4Value = Integer.toString(Card.getFirepower());
-		String att5Value = Integer.toString(Card.getCargo());
+				String att4Value = Integer.toString(Card.getFirepower());
+				String att5Value = Integer.toString(Card.getCargo());
 
-			String attValString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", nameValue,
-					att1Value, att2Value, att3Value, att4Value, att5Value);
+				String attValString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", nameValue,
+						att1Value, att2Value, att3Value, att4Value, att5Value);
 
 			}
-	}
+		}
 		/*
-		 * Category selected by the player and value of every players card for tha category
+		 * Category selected by the player and value of every players card for that
+		 * category
 		 */
 
 		String Attribute = "";
@@ -111,14 +115,14 @@ public class RoundView {
 			Player p = round.getPlayers()[i];
 			if (p.getHand().length > 0) {
 				System.out.println(p.getName() + ": " + round.getPrevValues()[i]);
-				
+
 			}
 		}
-		
 
 		boolean drawR = false;
 		int maxScore = 50;
 		int[] playerScores = new int[maxScore];
+		// attributes of all players in a round identifier
 		for (int i = 0; i < round.getPlayers().length; i++) {
 			if (round.getCards()[i] != null) {
 				Card c = round.getCards()[i];
@@ -143,6 +147,7 @@ public class RoundView {
 
 			}
 		}
+		// to identif if its a dra or not.
 		for (int i = maxScore - 1; i >= 0; i--) {
 			if (playerScores[i] == 1) {
 				break;
@@ -151,7 +156,7 @@ public class RoundView {
 				break;
 			}
 		}
-		
+
 		round.setDraw(drawR);
 		int topS = 0;
 		for (int i = 0; i < round.getPlayers().length; i++) {
@@ -181,7 +186,11 @@ public class RoundView {
 				}
 			}
 		}
-		if (round.getWinner() == null) {//W inner view
+		/*
+		 * this process is the one that places the card in the communal pile or the
+		 * cards been given to player if he wins round.
+		 */
+		if (round.getWinner() == null) {// W inner view
 			CommunalPileController communalPileC = new CommunalPileController();
 			for (Card c : round.getCards()) {
 				if (c != null) {
@@ -202,7 +211,7 @@ public class RoundView {
 			}
 			round.setPile(new CommunalPile());
 		}
-
+// Players hand information while playing a round and the cards value at play in a current round
 		for (Player p : round.getPlayers()) {
 			if (p.getHand().length > 0) {
 
@@ -227,34 +236,11 @@ public class RoundView {
 				System.out.println();
 			}
 		}
-		if (round.getPile().getCards().length > 0) {
-
-			String attribute1CPileName = round.getDeck().getSize();
-			String attribute2CPileName = round.getDeck().getSpeed();
-			String attribute3CPileName = round.getDeck().getRange();
-			String attribute4CPileName = round.getDeck().getFirepower();
-			String attribute5CPileName = round.getDeck().getCargo();
-			String attributeCPileNameString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", "",
-					attribute1CPileName, attribute2CPileName, attribute3CPileName, attribute4CPileName,
-					attribute5CPileName);
-
-			for (int i = 0; i < round.getPile().getCards().length; i++) {
-				String nameValue = round.getPile().getCards()[i].getName();
-				String att1Value = Integer.toString(round.getPile().getCards()[i].getSize());
-				String att2Value = Integer.toString(round.getPile().getCards()[i].getSpeed());
-				String att3Value = Integer.toString(round.getPile().getCards()[i].getRange());
-				String att4Value = Integer.toString(round.getPile().getCards()[i].getFirepower());
-				String att5Value = Integer.toString(round.getPile().getCards()[i].getCargo());
-
-				String attValString = String.format("%20.20s %15.15s %15.15s " + "%15.15s %15.15s %15.15s", nameValue,
-						att1Value, att2Value, att3Value, att4Value, att5Value);
-			}
-			System.out.println("---------------------------");
-		}
 	}
+
 	public Round getRound() {
 		return this.round;
-		
+
 	}
 
 }
